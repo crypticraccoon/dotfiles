@@ -1,0 +1,7 @@
+release_bind = [ "KeyB", "KeyS", "KeyD", "KeyF" ]
+
+[left]
+position = "left"
+ips = ["192.168.1.142"]
+port = 4242
+activate_on_startup = true

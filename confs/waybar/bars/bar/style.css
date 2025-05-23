@@ -1,0 +1,120 @@
+* {
+	font-family: "iosevka";
+	/*font-size: 13px;*/
+	color: #fff;
+}
+
+window {
+	font-size: 15px;
+	background-color: red;
+}
+
+window#waybar {
+	margin-left: 25px;
+	margin-right: 25px;
+	/*background-color: rgba(1, 1, 1, 0);*/
+}
+
+#custom-logo {
+	padding: 10px;
+	border-radius: 5px;
+	/*background-color: #1a1a1a;*/
+	padding-right: 14px;
+	font-size: 18px;
+}
+
+#window {
+	/*background-color: #1a1a1a;*/
+	padding-left: 15px;
+	padding-right: 15px;
+	border-radius: 5px;
+	font-weight: bold;
+}
+
+#workspaces {
+	/*background-color: #1a1a1a;*/
+	padding-left: 15px;
+	padding-right: 15px;
+	border-radius: 5px;
+}
+
+#workspaces:hover {
+	/*background-color: #1a1a1a;*/
+	padding-left: 15px;
+	padding-right: 15px;
+	border-radius: 5px;
+}
+
+#workspaces:hover {
+	/*background-color: #1a1a1a;*/
+}
+
+#group-system {
+	/*background-color: #141414;*/
+}
+
+#backlight {
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	padding-left: 15px;
+	padding-right: 15px;
+	/*background-color: #1a1a1a;*/
+}
+
+#custom-volume {
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	/*padding-left: 10px;*/
+	padding-right: 15px;
+	/*background-color: #1a1a1a;*/
+}
+
+#cpu {
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	padding-left: 15px;
+	padding-right: 15px;
+	/*background-color: #1a1a1a;*/
+}
+
+#temperature {
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	padding-left: 10px;
+	padding-right: 15px;
+	/*background-color: #1a1a1a;*/
+}
+
+#memory {
+	/*background-color: #1a1a1a;*/
+}
+
+#network {
+	border-radius: 5px;
+	padding-left: 15px;
+	padding-right: 15px;
+	/*background-color: #1a1a1a;*/
+}
+
+#battery {
+	border-radius: 5px;
+	padding-left: 15px;
+	padding-right: 15px;
+	/*background-color: #1a1a1a;*/
+}
+
+#custom-date {
+	background-color: #141414;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding-left: 15px;
+	padding-right: 15px;
+	border-radius: 5px;
+}
+
+#clock {
+	padding-left: 10px;
+	padding-right: 10px;
+	border-radius: 5px;
+	/*background-color: #1a1a1a;*/
+}

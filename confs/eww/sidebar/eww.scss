@@ -1,0 +1,58 @@
+$background: #141617; $foreground: #d4be98; $empty :#7c6f64; $accent: #ea6962;
+$icon_mini: 18px; $icon_small : 26px; $icon_medium : 38px; $icon_large : 60px;
+$transition: 1s;
+$text_medium: 14px; $text_big: 24px;
+$shadow:1px 1px 0px 0 rgba(160, 160, 160, 0.2), 5px 5px 0px 0 rgba(160, 160, 160, 0.19);
+$space_small: 5px; $space_medium: 8px; $space_big: 12px; $space_large: 18px;
+
+*{ all:unset; }
+box{ background-color: $background; }
+scale trough { background-color: red; }
+scale { all: unset; min-height: 50px;
+   trough { all: unset; background-color: $background; min-height: $space_large; min-width: $space_medium; }
+   highlight { background-color: $accent; }
+}
+.top{
+	 .logo { color: $accent; font-size: $icon_mini; }
+	 .occupied { color: $foreground }
+	 .current { color: $accent; }
+	 .empty { color: $empty; }
+	 .workspace-entry label{ font-size: $text_medium; margin:$space_small; }
+}
+.middle { color: $foreground; }
+.bottom {
+	 color: $foreground;
+	 .icon { font-size: $icon_mini; }
+	 .icon:hover { color: $accent; transition: $transition; }
+	 .slider { scale { min-height: 0px; } }
+	 .power { 
+			button { color:$background; padding:$space_small 0; transition: $transition; }
+			button:hover{ transition: $transition; background: $background; color:$accent }
+			background: $accent;
+	 }
+}
+.slide_top { 
+   .info_card_image{ background-size:375px; min-height: 200px; background-repeat: no-repeat; }
+	 .info label{ padding:$space_medium }
+}
+.slide_middle{
+	 .shortcuts{  
+			button { padding:$space_big; font-size: $text_big; transition: $transition;}
+			button:hover { background: $accent; color: $background; transition: $transition; }
+	 }
+	 .fm_shortcuts > *{ padding:$space_medium;
+	 * > * { padding:$space_medium; transition: $transition; }
+	 * > *:hover{ background: $accent; color: $background; transition: $transition; }
+}}
+.slide_bottom{
+	 color: $foreground;
+	 .slider { font-size: $text_medium; }
+	 .slider scale trough{ min-width: 300px; min-height: $space_big; padding: 0 $space_big; }
+	 .circlular_module { padding:$space_big ; font-size: $text_big }
+	 .net { padding:$space_small 0; }
+	 .date{ font-size: $text_big; padding:$space_big; }
+	 .slider_power {
+			button{ font-size: $text_big; padding:$space_big; transition: $transition; }
+			button:hover{ background: $accent; transition: $transition; }
+	 }
+}

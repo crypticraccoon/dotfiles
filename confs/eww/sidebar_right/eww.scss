@@ -1,0 +1,131 @@
+$text_light:#d5e5ff;
+$text_dark: #3c3d42;
+$accent1:#3a4d98;
+$accent2:#863adc;
+$background: #191923;
+$dark: #18171d;
+$light: #5e5f61;
+* {
+	all: unset;
+}
+
+.bar{
+	 //background-color: #1d2021;
+}
+
+.top {
+	color: $text_light;
+	.logo {
+		font-size: 20px;
+	}
+}
+
+.middle {
+	color: $text_light;
+	* {
+		margin: 2px 7px;
+	}
+
+	.current {
+		background-color: $text_dark;
+		box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 1), 0 1px 13px 0 rgb(23, 23, 23);
+	}
+
+	.occupied {
+		color: $light;
+	}
+}
+
+.bottom {
+	color: $text_light;
+	.status>* {
+		padding: 7px 0
+	}
+
+	.icon {
+		font-weight: 100;
+	}
+
+	.battery_icon {
+		font-size: 18px;
+	}
+
+	.power_icon {
+		font-size: 20px;
+		background-color: darkslategray;
+		border-radius: 5px;
+		margin: 0 5px;
+		transition: 1s;
+	}
+
+
+	.time {
+		font-weight: bold;
+		font-size: 18px;
+	}
+
+	scale trough {
+		background-color: red;
+	}
+
+	scale {
+		all: unset;
+		min-height: 50px;
+
+		trough {
+			all: unset;
+			min-height: 16px;
+			min-width: 14px;
+		}
+
+		highlight {
+			background-color: $text_dark;
+			border-radius: 5px;
+		}
+	}
+}
+
+// Calendar
+.cal-box {
+	background-color: $background;
+  font-size: 14px;
+	border-radius: 5px;
+	color: $text_light;
+	font-weight: 400;
+
+  .cal-inner-box {
+      padding: 15px;
+      .cal {
+
+					padding: 3px;
+          margin-left: 10px;
+      }
+  }
+}
+
+calendar:selected {
+	color: $accent2;
+}
+
+calendar.header {
+color: $text_light;
+font-weight: bold;
+}
+
+calendar.button {
+color: $text_light ;
+}
+
+calendar.highlight {
+color: $text_dark ;
+font-weight: bold;
+}
+
+calendar:indeterminate {
+color: $text_dark;
+}
+tooltip {
+  background-color: $background;
+	color: whitesmoke;
+	font-size: 16px;
+}

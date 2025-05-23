@@ -1,0 +1,94 @@
+// https://gitlab.gnome.org/GNOME/gtk/-/blob/gtk-3-24/gtk/theme/Adwaita/_colors-public.scss
+$theme_fg_color: #fff;
+$theme_bg_color: #000;
+
+
+* {
+  background: red;
+  font-size: 24px;
+}
+
+//window.Bar {
+  //background: transparent;
+  ////background: #{$theme_bg_color};
+  //font-weight: bold;
+  //border-bottom-left-radius: 15px;
+
+  //.centerbox {
+    //background: #{$theme_bg_color};
+    //border-bottom-left-radius: 10px;
+    //border-bottom-right-radius: 10px;
+    //padding: 6px;
+  //}
+
+
+  ////button {
+  ////border-radius: 8px;
+  ////margin: 2px;
+  ////}
+
+  ////label {
+  ////color: $theme_fg_color;
+  ////}
+//}
+
+
+////@use "sass:color";
+
+//.bar-padding {
+  //color: transparent;
+  //padding: 1px;
+//}
+
+////.bar-container {
+////padding: $window-bar-padding;
+
+////.media-player {
+////min-width: 180px;
+////background-color: color.adjust($fg, $alpha: -0.75);
+////padding: 0.5rem;
+////margin-left: 0.5rem;
+////border-radius: $window-border-radius;
+
+////.cover {
+////border-radius: $window-border-radius;
+////margin-right: 0.3rem;
+////}
+////}
+
+////.app-button {
+////image {
+////transition: -gtk-icon-size cubic-bezier(0.25, 1, 0.5, 1) 100ms;
+////}
+
+////.box {
+////padding: 0.2rem;
+//min-width: 45px;
+//min-height: 45px;
+//}
+
+//&:hover {
+//background-color: transparent;
+
+//image {
+//margin-bottom: 10px;
+//-gtk-icon-size: 40px;
+//}
+//}
+
+//&.focused {
+//.indicator {
+//min-width: 25px;
+//}
+//}
+
+//.indicator {
+//min-width: 4px;
+//min-height: 4px;
+//border-radius: 99px;
+//background-color: $accent;
+//margin-bottom: 3px;
+//transition: min-width 0.4s ease-in-out;
+//}
+//}
+//}

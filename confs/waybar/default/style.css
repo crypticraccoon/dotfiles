@@ -1,0 +1,105 @@
+* {
+	font-family: "iosevka";
+	/*font-size: 13px;*/
+	color: #ffffff;
+}
+
+window {
+	background-color: #ffffff;
+	font-size: 15px;
+}
+
+window#waybar {
+	margin-left: 25px;
+	margin-right: 25px;
+
+	background-color: #ffffff;
+	background-color: rgba(1, 1, 1, 0);
+}
+
+#custom-logo {
+	padding: 10px;
+	background-color: #141414;
+	padding-right: 14px;
+	font-size: 18px;
+}
+
+#window {
+	background-color: #141414;
+	padding-left: 15px;
+	padding-right: 15px;
+	font-weight: bold;
+}
+
+#workspaces {
+	background-color: #141414;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+#workspaces:hover {
+	background-color: #141414;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+#workspaces:hover {
+	background-color: #141414;
+}
+
+#group-system {
+	background-color: #141414;
+}
+
+#backlight {
+	padding-left: 15px;
+	padding-right: 15px;
+	background-color: #141414;
+}
+
+#custom-volume {
+	/*padding-left: 10px;*/
+	padding-right: 15px;
+	background-color: #141414;
+}
+
+#cpu {
+	padding-left: 15px;
+	padding-right: 15px;
+	background-color: #141414;
+}
+
+#temperature {
+	padding-left: 10px;
+	padding-right: 15px;
+	background-color: #141414;
+}
+
+#memory {
+	background-color: #141414;
+}
+
+#network {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+#battery {
+	padding-left: 15px;
+	padding-right: 15px;
+	background-color: #141414;
+}
+
+#custom-date {
+	background-color: #141414;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+#clock {
+	padding-left: 10px;
+	padding-right: 10px;
+	background-color: #141414;
+}

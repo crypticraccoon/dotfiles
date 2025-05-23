@@ -1,0 +1,92 @@
+#! /bin/sh
+#Net
+netCard="wlp1s0"
+interval=5
+#Temp
+gpuTemp=`sensors | awk '/edge/ {print $2}'`
+cpuTemp=`cat '/sys/class/hwmon/hwmon3/temp1_input'`
+#Memory
+memoryFree=`free -h | awk '/Mem/ {print $3}'`
+swapFree=`free -h | awk '/Swap/ {print $3}'`
+#Disk
+userDisk="nvme0n1p9"
+disk=$(df -h | awk '/nvme0n1p9/ {print $3}')
+#brightness
+brightness=`xbacklight -get`
+#volume
+volume=$(amixer -c 1 sget Master | awk '/Mono/ {printf $4} ')
+#battery
+battery=`cat /sys/class/power_supply/BAT1/capacity`
+getUpdates(){
+	echo $( pacman -Qu | grep -c "[ignored]" )
+}
+getDate(){
+	echo $(date)
+}
+getNet(){
+	declare -i rpf=0
+	frpf=0.0
+
+	function get_speed {
+	prefix=" B/s"
+	rpf=$1
+	frpf=$1
+
+	if [ $rpf -ge 1000 ]; then
+		frpf=`echo "scale=2 ; $frpf/1000.0"|bc`
+		rpf=$(($rpf/1000))
+		prefix=" KB/s"
+	fi
+	if [ $rpf -ge 1000 ]; then
+		frpf=`echo "scale=2 ; $frpf/1000.0"|bc`
+		prefix=" MB/s"
+	fi
+	}
+	rx1=`cat /sys/class/net/$netCard/statistics/rx_bytes`
+	tx1=`cat /sys/class/net/$netCard/statistics/tx_bytes`
+	sleep $interval
+	rx2=`cat /sys/class/net/$netCard/statistics/rx_bytes`
+	tx2=`cat /sys/class/net/$netCard/statistics/tx_bytes`
+
+	rx=$((($rx2-$rx1)/$interval))
+	tx=$((($tx2-$tx1)/$interval))
+
+	get_speed $rx
+	echo -n "$frpf$prefix"	
+}
+getTemps(){
+	echo "C:${cpuTemp:0:2}°|G:${gpuTemp:1:2}°"
+}
+getMem(){
+
+	if [[ $(free -h | awk '/swap/ {print $2}') == 0 ]];then
+		echo "$memoryFree | $swapFree"
+	else
+		echo "$memoryFree"
+	fi
+}
+getDisk(){
+	echo $disk
+}
+getVol(){
+	echo "${volume:1:-1}"
+}              
+getBrightness(){
+	echo "$brightness%"
+}              
+getBattery(){
+	echo $battery%
+}              
+
+case $1 in 
+	updates) getUpdates;;
+	net) getNet;;
+	temprature) getTemps;;
+	memory) getMem;;
+	disk) getDisk;;
+	volume) getVol;;
+	brightness) getBrightness;;
+	battery) getBattery;;
+	date) getDate;;
+esac
+

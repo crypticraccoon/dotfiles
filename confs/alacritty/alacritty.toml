@@ -1,0 +1,36 @@
+general.import=["~/personal/confs/alacritty/gruvbox/gruvbox_material.toml"]
+[font]
+#normal = {family = "Fira Code", style  = "light"}
+#normal = {family = "SpaceMono Nerd Font Mono", style  = "light"}
+normal = {family = "JetBrainsMono Nerd Font", style  = "thin"}
+size = 10
+
+[env]
+term = "xterm-256color"
+
+[terminal.shell]
+program = "/bin/bash"
+
+[window]
+opacity = 1
+blur = false
+decorations = "None"
+
+[window.padding]
+x = 5
+y = 5
+
+
+
+[keyboard]
+bindings = [
+#Resizing
+{key = "Backspace", mods = "Control|Shift", action = "ResetFontSize"},
+{key = "Plus", mods = "Control|Shift", action = "IncreaseFontSize"},
+{key = "Minus", mods = "Control|Shift", action = "DecreaseFontSize"},
+
+#Scrolling
+{key = "PageUp", mods = "Control|Shift", action = "ScrollPageUp"},
+{key = "PageDown", mods = "Control|Shift", action = "ScrollPageDown"},
+{key = "Enter", mods = "Control|Shift", action = "CreateNewWindow"},
+]

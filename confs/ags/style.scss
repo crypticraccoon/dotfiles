@@ -1,0 +1,38 @@
+// https://gitlab.gnome.org/GNOME/gtk/-/blob/gtk-3-24/gtk/theme/Adwaita/_colors-public.scss
+$fg-color: #{"@theme_fg_color"};
+$bg-color: #{"@theme_bg_color"};
+
+* {
+  background: transparent;
+  border: none
+}
+
+window.Bar {
+  //background: black;
+  color: $fg-color;
+  font-weight: bold;
+
+
+
+  .main {
+    background: transparent;
+    border-radius: 10px;
+    padding: 8px;
+
+  }
+
+  .trayBox {
+    margin: 0 15px;
+
+
+    &:last-child{
+      background-color: red;
+      margin-right: 0px;
+    } 
+  }
+
+  button {
+    border-radius: 8px;
+    margin: 2px;
+  }
+}
