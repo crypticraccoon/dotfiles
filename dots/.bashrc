@@ -5,7 +5,7 @@
 
 #Source
 source /usr/share/git/git-prompt.sh
-source ${HOME}/personal/configs/dots/.alias
+source ${HOME}/.alias
 #============================================
 #		Env Variables
 #============================================

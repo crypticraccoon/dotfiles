@@ -1,9 +1,7 @@
 general.import=["~/personal/confs/alacritty/gruvbox/gruvbox_material.toml"]
 [font]
-#normal = {family = "Fira Code", style  = "light"}
-#normal = {family = "SpaceMono Nerd Font Mono", style  = "light"}
 normal = {family = "JetBrainsMono Nerd Font", style  = "thin"}
-size = 10
+size = 12
 
 [env]
 term = "xterm-256color"
@@ -12,8 +10,8 @@ term = "xterm-256color"
 program = "/bin/bash"
 
 [window]
-opacity = 1
-blur = false
+opacity = 0.99
+blur = true
 decorations = "None"
 
 [window.padding]
