@@ -1,7 +1,12 @@
 # ~/.bashrc
 #
 # If not running interactively, don't do anything
+foo(){
+	 insomnia --use-angle=vulkan
+}
+export -f foo
 [[ $- != *i* ]] && return
+
 
 #Source
 source /usr/share/git/git-prompt.sh
@@ -9,18 +14,33 @@ source ${HOME}/.alias
 #============================================
 #		Env Variables
 #============================================
- export LESS='-R --use-color -Dd+r$Du+b'
- export EDITOR=/usr/bin/nvim
- export FZF_DEFAULT_OPTS="
+export ELECTRON_OZONE_PLATFORM_HINT=auto 
+export ELECTRON_USE_ANGLE=vulkan
+export ELECTRON_ENABLE_FEATURES=Vulkan
+
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+export LESS='-R --use-color -Dd+r$Du+b'
+export EDITOR=/usr/bin/nvim
+export FZF_DEFAULT_OPTS="
  --exact
  --border sharp
  --margin=1
  --height=25
  --color='16,fg:1,preview-fg:4,border:1'
  --preview '([[ -f {} ]] && (cat -n {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200'
- "
+"
 
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .password-store  --exclude .git --exclude .gitignore --exclude node_modules --exclude .npm'
+export FZF_DEFAULT_COMMAND='fd 
+	 --type f 
+	 --hidden 
+	 --follow 
+	 --exclude .password-store  
+	 --exclude .git 
+	 --exclude .gitignore 
+	 --exclude node_modules 
+	 --exclude .npm
+	 '
 
 #============================================
 #		Paths

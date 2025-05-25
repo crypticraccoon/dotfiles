@@ -12,9 +12,13 @@
 ## style-11    style-12    style-13    style-14    style-15
 
 theme='style-2'
-dir="$HOME/.config/rofi/launchers/type-1/"
+dir="$HOME/.config/rofi/styles/"
 ## Run
+                                       
+
+
 rofi \
+	  -run-command "/bin/bash -ic '${HOME}/.config/rofi/hooks/hook.sh {cmd}'" \
 	  -modes "run,ssh,drun" \
     -show drun \
     -theme ${dir}/${theme}.rasi
