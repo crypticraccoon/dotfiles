@@ -1,0 +1,342 @@
+(defwindow overlay
+	 :monitor 0
+	 :geometry (geometry :x "2.5%"
+			 :y "2.5%"
+			 :width "95%"
+			 :height "95%"
+			 :anchor "top center")
+	 :stacking "bg"
+	 :namespace "overlay"
+	 :wm-ignore false
+	 (bar)
+)
+
+(defvar SHELL "/bin/bash -c")
+(defvar TERMINAL "/bin/alacritty -e")
+(defvar NOTIFY "notify-send")
+(defvar STATUSMONITOR "btop")
+(defvar FILEMANAGER "yazi")
+
+
+(defvar KEYBOARD_STATE false)
+(defvar KEYBOARD_ON_ICON " ")
+(defvar KEYBOARD_OFF_ICON "󰹋 ")
+
+
+;;===SYS CONTROLS
+(deflisten BRIGHTNESS_VALUE :initial 0 "scripts/screen_backlight.sh --value")
+(defvar BRIGHTNESS_ICON "󰃞")
+
+(deflisten KBRIGHTNESS_VALUE :initial 0 "scripts/keyboard_backlight.sh --value")
+(defvar KBRIGHTNESS_ICON "󰃞")
+
+(defvar VOLUME_ICON "")
+(deflisten VOLUME_VALUE :initial 0 "scripts/volume.sh --value")
+
+;;===SYS INFO
+(defpoll DISK_INFO :interval "10s" "scripts/disk.sh nvme0n1p4")
+(defpoll MEM_INFO :interval "10s" "scripts/memory.sh")
+(defpoll BATTERY_INFO :interval "10s" "scripts/battery.sh BAT0")
+(defpoll CPU_INFO :interval "10s" "scripts/cpu.sh thermal_zone1")
+(defpoll GPU_INFO :interval "10s" "scripts/gpu.sh")
+
+
+;;===WIFI
+(defpoll WIFI_INFO :interval "10s" "scripts/network.sh wlan0")
+
+;;===TIME
+(defpoll HOUR :interval "10s" "date '+%H'")
+(defpoll MINUTE :interval "10s" "date '+%M'")
+(defpoll DATE :interval "60s" "date '+%b %d, %Y'")
+
+
+
+(defwidget bar[]
+	 (box 
+			:class "bar"
+			:orientation "v"
+			(top)
+			;;(middle)
+			(bottom)
+	 )
+)
+(defwidget top[]
+	 (box
+			:class "top"
+			:vexpand false
+
+			(box 
+				 :class "topLeft" 
+				 :valign "start" 
+				 :halign "start" 
+				 :orientation "v"
+				 :space-evenly false
+				 (time)
+				 (cpu)
+				 (gpu)
+				 (memory)
+			)
+			(box
+				 :class "topRight"
+				 :orientation "v"
+				 :valign "start" 
+				 :halign "end"
+				 :space-evenly false
+				 (sysControls)
+				 (wifi)
+			)
+	 )
+)
+(defwidget middle[]
+	 (box
+			:class "middle"
+			:orientation "h"
+			(box 
+				 ;:hexpand false
+				 ;:space-evenly false
+				 :halign "start"
+				 :valign "start"
+				 :orientation "v"
+				 (box 
+						:halign "end"
+						:valign "center"
+						:orientation "h"
+						:space-evenly false
+
+						(label :text {MEM_INFO})
+				 )
+				 (label :justify "start" :text {DISK_INFO})
+				 (label :text {BATTERY_INFO})
+			)
+			(box
+				 :orientation "v"
+				 :space-evenly false
+				 (cpu)
+				 (gpu)
+				 (wifi)
+			)
+	 )
+)
+(defwidget bottom[]
+	 (box
+			(shortcutButtons)
+			(sysControlButtons)
+	 )
+)
+;;---TOP WIDGETS
+(defwidget time []
+
+	 (box 
+			:class "date"
+			:orientation "v" 
+			:valign "start"
+			:halign "start"
+			:space-evenly false
+(label 
+				 :class "date"
+				 :text DATE
+				 :valign "end"
+			)
+
+			(box
+				 :class "time"
+				 :orientation "h"
+				 :halign "start"
+				 :space-evenly false
+				 (label :text HOUR )
+				 (label :text ":" )
+				 (label :text MINUTE )
+			)
+				 )
+)
+(defwidget sysControls[]
+	 (box :orientation "v"
+			(box :orientation "v"
+				 (screenBacklight)
+				 (keyboardBacklight)
+			) 
+			(box :orientation "v"
+				 (volume)
+				 (mic)
+			)
+	 )
+)
+(defwidget screenBacklight[]
+	 (box :orientation "h" :space-evenly false
+			(scale 
+				 :value {BRIGHTNESS_VALUE}
+				 :orientation "h"
+				 :hexpand true
+				 :active true
+				 :max 101
+				 :min 0
+				 :flipped true
+				 :onchange "brightnessctl --quiet s {}%")
+				 (label  :text "Screen Backlight")
+	 )
+)
+(defwidget keyboardBacklight[]
+	 (box :orientation "h" :space-evenly false
+			(scale 
+				 :value {KBRIGHTNESS_VALUE}
+				 :orientation "h"
+				 :hexpand true
+				 :active true
+				 :max 101
+				 :min 0
+				 :flipped true
+				 :onchange "brightnessctl -d *::kbd_backlight --quiet s {}%")
+				 (label  :text "Keyboard Backlight")
+	 )
+)
+(defwidget volume[]
+	 (box :orientation "h" :space-evenly "false"
+			(scale 
+				 :value {VOLUME_VALUE}
+				 :orientation "h"
+				 :hexpand true
+				 :active true
+				 :max 101
+				 :min 0
+				 :flipped true
+				 :onchange "amixer sset Master {}% -q")
+				 (label :text "Volume")
+	 )
+)
+(defwidget mic[]
+	 (box :orientation "h" :space-evenly "false"
+			(scale 
+				 :value {VOLUME_VALUE}
+				 :orientation "h"
+				 :hexpand true
+				 :active true
+				 :max 101
+				 :min 0
+				 :flipped true
+				 :onchange "amixer sset Master {}% -q")
+				 (label :text "Mic")
+	 )
+)
+;;---MIDDLE WIDGETS
+(defwidget memory []
+	 (box
+			:halign "start"
+			:valign "center"
+			:orientation "h"
+			:space-evenly false
+
+			(label :text "${MEM_INFO}")
+	 )
+
+)
+
+
+(defwidget cpu[]
+	 (box
+			:halign "start"
+			:valign "center"
+			:orientation "h"
+			:space-evenly false
+
+			(label :text "${CPU_INFO}")
+	 )
+)
+(defwidget gpu[]
+	 (box
+			:halign "start"
+			:valign "center"
+			:orientation "h"
+			:space-evenly false
+
+			(label :text "${GPU_INFO}")
+	 )
+)
+(defwidget wifi[]
+	 (box
+			:halign "end"
+			:valign "center"
+			:orientation "h"
+			:space-evenly false
+
+			(label :justify "right" :text '
+				 {
+				 ${WIFI_INFO.icon}: "icon",
+				 ${WIFI_INFO.down}: "down",
+				 ${WIFI_INFO.up}: "up"
+				 }
+				 ')
+	 )
+)
+(defwidget battery[]
+	 (box
+			:halign "end"
+			:valign "center"
+			:orientation "h"
+			:space-evenly false
+
+			(label :justify "right" :text '
+				 {
+				 ${BATTERY_INFO.icon}: "icon",
+				 ${BATTERY_INFO.status}: "status",
+				 ${BATTERY_INFO.percentage}: "percentage"
+				 }
+				 ')
+	 )
+)
+
+(defwidget disk[]
+	 (box
+			:halign "end"
+			:valign "center"
+			:orientation "h"
+			:space-evenly false
+
+			(label :justify "right" :text '
+				 {
+				 ${DISK_INFO.icon}: "icon",
+				 ${DISK_INFO.total}: "total",
+				 ${DISK_INFO.used}: "used",
+				 ${DISK_INFO.free}: "free",
+				 ${DISK_INFO.percentage}: "percentage"
+				 }
+				 ')
+	 )
+)
+
+;;---BOTTOM WIDGETS
+(defwidget shortcutButtons[]
+	 (box 
+			:valign "end" 
+			:halign "start"
+			:orientation "h"
+			(button 
+				 :onclick	{ "${KEYBOARD_STATE}"
+				 ?"sudo systemctl stop toggle_keyboard && ${EWW_CMD} update KEYBOARD_STATE=false"
+				 :"sudo systemctl start toggle_keyboard && ${EWW_CMD} update KEYBOARD_STATE=true" }	
+				 (label 
+				 :class "icon" 
+				 :text { "${KEYBOARD_STATE}" ? "${KEYBOARD_OFF_ICON}" : "${KEYBOARD_ON_ICON}"}
+				 )
+			)
+			(button :onclick "${SHELL} '${TERMINAL} bluetoothctl &'" (label :class "icon" :text "󰂯"))
+			(button :onclick "${SHELL} '${TERMINAL} ${FILEMANAGER} &'" (label :class "icon" :text ""))
+			(button :onclick "${SHELL} '${TERMINAL} ${STATUSMONITOR} &'" (label :class "icon" :text "󰨇"))
+	 )
+)
+(defwidget sysControlButtons[]
+	 (box 
+			:valign "end"
+			:halign "end"
+			:space-evenly false
+			:orientation "v"
+			(disk)
+			(battery)
+			(box 
+			:valign "end" 
+			:halign "end"
+			:orientation "h"
+			(button :onclick "${NOTIFY} 'Shutdown'" (label :class "icon" :text " 󰐥"))
+			(button :onclick "${NOTIFY} 'Reboot'" (label :class "icon" :text "󰜉"))
+			(button :onclick "${NOTIFY} 'Sign Out'" (label :class "icon" :text ""))
+	 ) )
+)

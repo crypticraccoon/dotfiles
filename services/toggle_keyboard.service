@@ -1,0 +1,6 @@
+[Unit]
+Description=Keyboard switch
+
+[Service]
+ExecStart=/bin/bash -c ' /usr/bin/evtest --grab /dev/input/$(cat /proc/bus/input/devices | grep -b5 "Apple SPI Keyboard" | grep -oP "event(\d\d|\d)") >/dev/null'
+Restart=always

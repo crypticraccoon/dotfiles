@@ -1,0 +1,54 @@
+$radius: 5px;
+$foreground: grey;
+$accent1: grey;
+$color: black;
+
+* {
+  all: unset;
+  color: $color;
+}
+
+label {
+  font-weight: 200;
+  font-size: 14px;
+  text-shadow: 1px 1px 2px black;
+}
+
+
+
+
+button {
+  border-radius: $radius;
+  padding: 15px;
+  margin: 10px
+}
+
+.icon {
+  font-size: 24px;
+}
+
+trough highlight {
+  background-image: linear-gradient(to right, #000 20%, #aeaeae 50%, darkgrey 100% *50);
+  border-radius: 4px;
+}
+
+scale trough {
+  all: unset;
+  background-color: $accent1;
+  min-height: 3px;
+  min-width: 70px;
+  margin: 0px 10px 0px 5px;
+}
+
+
+.date {
+  >.date {
+    font-size: 36px;
+    font-weight: bold;
+  }
+
+  >.time label {
+    font-size: 72px;
+    font-weight: bolder;
+  }
+}

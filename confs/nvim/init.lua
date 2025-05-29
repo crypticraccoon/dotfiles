@@ -40,7 +40,7 @@ map('n', '<A-left>', '<C-w>h', { noremap = true, silent = false })
 map('n', '<A-right>', '<C-w>l', { noremap = true, silent = false })
 map('n', '<A-down>', '<C-w>j', { noremap = true, silent = false })
 map('n', '<A-up>', '<C-w>k', { noremap = true, silent = false })
-map('n', '<leader>s', ':source ~/personal/confs/nvim/init.lua<CR>',
+map('n', '<leader>s', ':source $HOME/.config/nvim/init.lua<CR>',
 	{ noremap = true })
 map('n', '<C-Left>', ':tabprevious<CR>', { noremap = true })
 map('n', '<C-Right>', ':tabnext<CR>', { noremap = true })
@@ -60,8 +60,9 @@ require("config.lazy")
 
 set.showtabline = 2
 
-vim.cmd.colorscheme('gruvbox-material')
---vim.cmd.colorscheme('bamboo')
+
+--vim.cmd.colorscheme('gruvbox-material')
+vim.cmd.colorscheme('bamboo')
 api.nvim_set_hl(0, "Folded", { bg="none", fg="#e75a7c"})
 
 set.syntax = "on"

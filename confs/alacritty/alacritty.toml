@@ -1,6 +1,6 @@
-general.import=["~/personal/confs/alacritty/gruvbox/gruvbox_material.toml"]
+general.import=["~/.config/alacritty/mountain.toml"]
 [font]
-normal = {family = "JetBrainsMono Nerd Font", style  = "thin"}
+normal = {family = "JetBrainsMono Nerd Font", style  = "normal"}
 size = 12
 
 [env]

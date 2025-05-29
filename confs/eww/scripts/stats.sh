@@ -25,8 +25,8 @@ function battery() {
 }
 
 function disk_perc(){
-	 dec=$(df -h | awk '/nvme0n1p9/ {printf $5}')
-	 echo ${dec:0:2}
+	 dec=$(df -h | awk '/nvme0n1p4/ {printf $5}')
+	 echo ${dec}
 }
 
 function battery_status(){

@@ -1,14 +1,25 @@
-#! /bin/bash 
-ext=""
-eww_spawned=$(pidof eww)
-mon=1
-[[ $1 != "" ]] &&  ext="--config $1" 
-function toggle_eww(){ 
-   if [[  $eww_spawned ]]
-	 then eww close-all $ext
-   else env XDG_CACHE_HOME=/tmp eww open bar $ext 
-	 fi
-}
+#!/bin/bash 
 
-if [[ ! $eww_spawned ]];then eww daemon $ext; toggle_eww; fi
+configFile=$1
+args=$2
+echo "+++++++++++++++++++++++++++++++++++++++++"
+
+
+ewwLoaded=$(pidof eww)
+if [[ ! $ewwLoaded ]];then
+	 echo 'starting'
+	 eww daemon --force-wayland --config $configFile
+else
+	 echo 'restarting'
+	 eww daemon --restart --force-wayland --config $configFile
+fi
+sleep 5
+echo "closing"
+echo $configFile
+echo "+++++++++++++++++++++++++++++++++++++++++"
+
+eww close-all --config $configFile
+echo "============="
+eww open-many $args --force-wayland --config $configFile
+
 

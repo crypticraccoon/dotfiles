@@ -1,12 +1,7 @@
 # ~/.bashrc
 #
 # If not running interactively, don't do anything
-foo(){
-	 insomnia --use-angle=vulkan
-}
-export -f foo
 [[ $- != *i* ]] && return
-
 
 #Source
 source /usr/share/git/git-prompt.sh
@@ -47,6 +42,7 @@ export FZF_DEFAULT_COMMAND='fd
 #============================================
 PATH=$PATH:${HOME}/.cargo/bin
 PATH="${PATH}:${HOME}/.local/bin/"
+
 PATH=$PATH:/usr/local/go/bin
 PATH="$PATH:${HOME}/personal/programs/flutter/bin"
 PATH="$PATH:${HOME}/Android/Sdk/tools/bin"
