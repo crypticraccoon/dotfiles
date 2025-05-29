@@ -47,7 +47,6 @@ return {
 			 function()
 				 require("colorizer").setup({
 					 css = {
-
 						 RGB       = true,
 						 hsl_fn    = true,
 						 css       = true,
@@ -57,13 +56,6 @@ return {
 					 }
 				 })
 			 end
-		--opts = function()
-		--vim.defer_fn(
-		--function()
-		----require("colorizer").attach_to_buffer(0)
-		--end,
-		--0)
-		--end
 	},
 	{
 		"nyoom-engineering/oxocarbon.nvim"
@@ -73,7 +65,8 @@ return {
 		opts = function()
 			require "lualine".setup {
 				options = {
-					theme = 'sonokai',
+					--theme = 'sonokai',
+					theme = 'oxocarbon',
 					--theme = 'gruvbox-material',
 					section_separators = '',
 					component_separators = ''
@@ -87,6 +80,7 @@ return {
 		'rcarriga/nvim-notify',
 		config = function(_, opts)
 			local x = require("notify").setup({
+			  background_colour = "#000000",
 				fps = 60,
 				top_down = false,
 				render = "compact",
@@ -94,21 +88,7 @@ return {
 			vim.notify = require("notify")
 		end,
 	},
-	--{
-	--"alexxGmZ/e-ink.nvim",
-	--priority = 1000,
-	--config = function()
-	--require("e-ink").setup()
-	----vim.cmd.colorscheme "e-ink"
-	----vim.opt.background = "dark"
-	----local set_hl = vim.api.nvim_set_hl
-	----local mono = require("e-ink.palette").mono()
 
-	--set_hl(0, "Normal", { fg = mono[12], bg = "NONE" })
-
-
-	--end
-	--},
 	{
 		'sainnhe/gruvbox-material',
 		config = function()
@@ -150,9 +130,9 @@ return {
 			vim.g.everforest_better_performance = 1
 			vim.opt.background = "dark"
 			vim.g.airline_theme = 'everforest'
-			require 'lualine'.setup { options = {
-				theme = 'everforest' }
-			}
+			--require 'lualine'.setup { options = {
+				--theme = 'everforest' }
+			--}
 		end
 	},
 

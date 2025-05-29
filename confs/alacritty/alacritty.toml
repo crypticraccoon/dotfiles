@@ -1,4 +1,4 @@
-general.import=["~/.config/alacritty/mountain.toml"]
+general.import=["~/.config/alacritty/oxocarbon.toml"]
 [font]
 normal = {family = "JetBrainsMono Nerd Font", style  = "normal"}
 size = 12

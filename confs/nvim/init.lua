@@ -61,8 +61,8 @@ require("config.lazy")
 set.showtabline = 2
 
 
---vim.cmd.colorscheme('gruvbox-material')
-vim.cmd.colorscheme('bamboo')
+vim.cmd.colorscheme('oxocarbon')
+--vim.cmd.colorscheme('bamboo')
 api.nvim_set_hl(0, "Folded", { bg="none", fg="#e75a7c"})
 
 set.syntax = "on"

@@ -20,7 +20,7 @@ alias paremove='paru -Qq | fzf -q "$1" -m --preview "paru -Qi {1}" | xargs -ro s
 #============================================
 
 #holder
-alias wp='${HOME}/personal/dotfiles/scripts/wallpaper.sh'
+alias wp='${HOME}/.config/hypr/scripts/wallpaper.sh'
 alias ssh='ssh -o ServerAliveInterval=60 -xC'
 alias sd='poweroff'
 alias rb='reboot'
