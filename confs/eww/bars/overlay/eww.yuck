@@ -83,7 +83,6 @@
 				 :halign "end"
 				 :space-evenly false
 				 (sysControls)
-				 (wifi)
 			)
 	 )
 )
@@ -329,6 +328,8 @@
 			:halign "end"
 			:space-evenly false
 			:orientation "v"
+
+			(wifi)
 			(disk)
 			(battery)
 			(box 
