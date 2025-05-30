@@ -31,7 +31,8 @@
 (defvar KBRIGHTNESS_ICON "󰃞")
 
 (defvar VOLUME_ICON "")
-(deflisten VOLUME_VALUE :initial 0 "scripts/volume.sh --value")
+(deflisten VOLUME_VALUE :initial 0 "scripts/volume.sh --value 0")
+(deflisten MIC_VOLUME_VALUE :initial 0 "scripts/volume.sh --mvalue 0")
 
 ;;===SYS INFO
 (defpoll DISK_INFO :interval "10s" "scripts/disk.sh nvme0n1p4")
@@ -47,7 +48,7 @@
 ;;===TIME
 (defpoll HOUR :interval "10s" "date '+%H'")
 (defpoll MINUTE :interval "10s" "date '+%M'")
-(defpoll DATE :interval "60s" "date '+%b %d, %Y'")
+(defpoll DATE :interval "60s" "date '+%a %d %b, %Y'")
 
 
 
@@ -198,21 +199,21 @@
 				 :max 101
 				 :min 0
 				 :flipped true
-				 :onchange "amixer sset Master {}% -q")
+				 :onchange "pactl set-sink-volume 0 {}%")
 				 (label :text "Volume")
 	 )
 )
 (defwidget mic[]
 	 (box :orientation "h" :space-evenly "false"
 			(scale 
-				 :value {VOLUME_VALUE}
+				 :value {MIC_VOLUME_VALUE}
 				 :orientation "h"
 				 :hexpand true
 				 :active true
 				 :max 101
 				 :min 0
 				 :flipped true
-				 :onchange "amixer sset Master {}% -q")
+				 :onchange "pactl set-source-volume 0 {}%")
 				 (label :text "Mic")
 	 )
 )

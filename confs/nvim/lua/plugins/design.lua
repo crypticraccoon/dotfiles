@@ -66,8 +66,8 @@ return {
 			require "lualine".setup {
 				options = {
 					--theme = 'sonokai',
-					theme = 'oxocarbon',
-					--theme = 'gruvbox-material',
+					--theme = 'oxocarbon',
+					theme = 'gruvbox-material',
 					section_separators = '',
 					component_separators = ''
 

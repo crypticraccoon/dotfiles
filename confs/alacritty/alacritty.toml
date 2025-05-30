@@ -1,4 +1,4 @@
-general.import=["~/.config/alacritty/oxocarbon.toml"]
+general.import=["~/.config/alacritty/gruvbox/gruvbox_material.toml"]
 [font]
 normal = {family = "JetBrainsMono Nerd Font", style  = "normal"}
 size = 12

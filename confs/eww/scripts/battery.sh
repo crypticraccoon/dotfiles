@@ -17,6 +17,7 @@ elif [[ $perc -gt 70 ]];then
 elif [[ $perc -lt 70 && $perc -gt 30 ]];then
  	icon="󰁾"
 elif [[ $perc -lt 30 ]];then
+	 notify-send "Battery low ($perc%)";
  	icon="󰂀"
 elif [[ $status == "Charging" ]];then
 	 icon="󰂄"
