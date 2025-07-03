@@ -4,7 +4,6 @@ type=$1
 cardSource=$2 
 cVolume=$(pactl get-sink-volume $cardSource | awk '{print $5}' | tr -d '\[%\]')
 mVolume=$(pactl get-source-volume $cardSource | awk '{print $5}' | tr -d '\[%\]')
-echo $cVolume
 
 
 if [[ $type == "--icon" ]];then

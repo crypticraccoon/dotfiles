@@ -24,15 +24,17 @@
 
 
 ;;===SYS CONTROLS
-(deflisten BRIGHTNESS_VALUE :initial 0 "scripts/screen_backlight.sh --value")
+(defpoll BRIGHTNESS_VALUE :interval  "10s" "scripts/screen_backlight.sh --value")
 (defvar BRIGHTNESS_ICON "󰃞")
 
-(deflisten KBRIGHTNESS_VALUE :initial 0 "scripts/keyboard_backlight.sh --value")
+(defpoll KBRIGHTNESS_VALUE :interval  "10s" "scripts/keyboard_backlight.sh --value")
 (defvar KBRIGHTNESS_ICON "󰃞")
 
 (defvar VOLUME_ICON "")
-(deflisten VOLUME_VALUE :initial 0 "scripts/volume.sh --value 0")
-(deflisten MIC_VOLUME_VALUE :initial 0 "scripts/volume.sh --mvalue 0")
+;(deflisten VOLUME_VALUE :initial 0 "scripts/volume.sh --value 0")
+;(deflisten MIC_VOLUME_VALUE :initial 0 "scripts/volume.sh --mvalue 0")
+(defpoll VOLUME_VALUE :interval  "10s" "scripts/volume.sh --value 0")
+(defpoll MIC_VOLUME_VALUE :interval  "10s" "scripts/volume.sh --mvalue 0")
 
 ;;===SYS INFO
 (defpoll DISK_INFO :interval "10s" "scripts/disk.sh nvme0n1p4")

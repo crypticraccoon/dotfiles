@@ -15,8 +15,8 @@ blur = true
 decorations = "None"
 
 [window.padding]
-x = 5
-y = 5
+x = 15
+y = 15
 
 
 

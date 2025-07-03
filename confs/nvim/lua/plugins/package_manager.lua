@@ -78,7 +78,9 @@ return {
 				filetypes = { "py" },
 			})
 
-
+			require("lspconfig").docker_compose_language_service.setup({
+				filetypes = { "yaml" }
+			})
 			require("lspconfig").sqls.setup({
 				filetypes = { "sql" },
 				on_attach = function(client, _)
@@ -87,8 +89,9 @@ return {
 				end
 
 			})
+
 			--DART LSP, requires dart
-			require("lspconfig").dartls.setup({
+			require("lspconfig")["dartls"].setup({
 				cmd = { "dart", "language-server", "--protocol=lsp" },
 				filetypes = { "dart" },
 				init_options = {
@@ -98,7 +101,7 @@ return {
 					outline = true,
 					suggestFromUnimportedLibraries = true,
 				},
-				 --root_dir = root_pattern("pubspec.yaml"),
+				--root_dir = root_pattern("pubspec.yaml"),
 				settings = {
 					dart = {
 						completeFunctionCalls = true,
@@ -110,7 +113,6 @@ return {
 
 			})
 
-			require("lspconfig").autopep8.setup({})
 
 
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
