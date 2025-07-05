@@ -1,3 +1,4 @@
+#general.import=["~/.config/alacritty/gruvbox/gruvbox_light.toml"]
 general.import=["~/.config/alacritty/gruvbox/gruvbox_material.toml"]
 [font]
 normal = {family = "JetBrainsMono Nerd Font", style  = "normal"}
