@@ -1,6 +1,6 @@
 general.import=["~/.config/alacritty/gruvbox/gruvbox_material.toml"]
 [font]
-normal = {family = "JetBrainsMono Nerd Font", style  = "normal"}
+normal = {family = "JetBrainsMono Nerd Font Propo", style  = "regular"}
 size = 12
 
 [env]
@@ -16,7 +16,7 @@ decorations = "None"
 
 [window.padding]
 x = 15
-y = 15
+y = 0
 
 
 

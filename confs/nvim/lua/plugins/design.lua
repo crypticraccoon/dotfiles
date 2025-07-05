@@ -80,7 +80,7 @@ return {
 		'rcarriga/nvim-notify',
 		config = function(_, opts)
 			local x = require("notify").setup({
-			  background_colour = "#000000",
+				background_colour = "#000000",
 				fps = 60,
 				top_down = false,
 				render = "compact",
@@ -131,7 +131,7 @@ return {
 			vim.opt.background = "dark"
 			vim.g.airline_theme = 'everforest'
 			--require 'lualine'.setup { options = {
-				--theme = 'everforest' }
+			--theme = 'everforest' }
 			--}
 		end
 	},
@@ -155,6 +155,21 @@ return {
 				-- function: code to be executed after highlight groups are cleared
 				-- Also the user event "TransparentClear" will be triggered
 				on_clear = function() end,
+			})
+		end
+	},
+	{
+		"AlexvZyl/nordic.nvim",
+		config = function()
+			require("nordic").setup({
+				transparent = {
+					-- Enable transparent background.
+					bg = false,
+					-- Enable transparent background for floating windows.
+					float = false,
+				},
+				bright_border = false,
+				swap_backgrounds = true,
 			})
 		end
 	}

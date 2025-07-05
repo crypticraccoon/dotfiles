@@ -1,12 +1,10 @@
 #!/bin/bash
 
 aurMangerUrl="https://aur.archlinux.org/paru.git"
-userPackages="man-db fzf wayland hyprland neovim firefox docker docker-compose git brightnessctl pulseaudio pipewire-jack hyprpaper xdg-desktop-portal-hyprland pavucontrol dunst grim slurp wl-clipboard jq yazi evtest eza ripgrep rofi-wayland tree-sitter wev wl-clip-persist"
+userPackages="man-db fzf wayland hyprland neovim firefox docker docker-compose git brightnessctl pulseaudio pipewire-jack xdg-desktop-portal-hyprland pavucontrol dunst grim slurp wl-clipboard jq yazi evtest eza ripgrep rofi-wayland tree-sitter wev wl-clip-persist lazygit ueberzugpp swww"
 webDevSpecific="go typescript"
 fontPackages="ttf-fira-sans ttf-noto-nerd ttf-fira-mono ttf-firacode-nerd ttf-jetbrains-mono ttf-nerd-fonts-symbols adobe-source-han-sans-cn-fonts ttf-jetbrains-mono-nerd"
 aurPackages="bottom eww"
-
-
 
 getPackages(){
 	 sudo pacman -S $userPackages $webDevSpecific $fontPackages 
@@ -21,6 +19,14 @@ installAur() {
 	 cd ${HOME}/personal/programs/paru && makepkg -si && paru -S $aurPackages
 }
 
+
+setupDocker(){
+	 sudo systemctl enable docker
+	 sudo systemctl start docker
+	 sudo groupadd docker
+	 sudo usermod -aG docker $(whoami)
+	 newgrp docker
+}
 
 setupDots(){
 	 #Services
@@ -49,5 +55,5 @@ setupBar(){
 	 ln -sr ${HOME}/personal/dotfiles/confs/eww/bars/overlay ${HOME}/.config/eww
 }
 
-getPackages && installAur && setupDots && setupTmux && setupBar
+getPackages && installAur && setupDots && setupTmux && setupBar && setupDocker
 

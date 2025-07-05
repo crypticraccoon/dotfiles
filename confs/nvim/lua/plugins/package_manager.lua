@@ -78,6 +78,11 @@ return {
 				filetypes = { "py" },
 			})
 
+			require("lspconfig").qmlls.setup({
+				filetypes = { "qml" }
+			})
+
+
 			require("lspconfig").docker_compose_language_service.setup({
 				filetypes = { "yaml" }
 			})
