@@ -430,7 +430,7 @@ os:
   editInTerminal: true
 
   # For opening a directory in an editor
-  openDirInEditor: "yazi"
+  openDirInEditor: "yazi {{dir}}"
 
   # A built-in preset that sets all of the above settings. Supported presets
   # are defined in the getPreset function in editor_presets.go.
