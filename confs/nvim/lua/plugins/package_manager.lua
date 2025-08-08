@@ -52,14 +52,14 @@ return {
 
 			--Border Customization
 			local border = {
-				{ "🭽", "FloatBorder" },
-				{ "▔", "FloatBorder" },
-				{ "🭾", "FloatBorder" },
-				{ "▕", "FloatBorder" },
-				{ "🭿", "FloatBorder" },
-				{ "▁", "FloatBorder" },
-				{ "🭼", "FloatBorder" },
-				{ "▏", "FloatBorder" },
+				{ "", "FloatBorder" },
+				{ "", "FloatBorder" },
+				{ "", "FloatBorder" },
+				{ "", "FloatBorder" },
+				{ "", "FloatBorder" },
+				{ "", "FloatBorder" },
+				{ "", "FloatBorder" },
+				{ "", "FloatBorder" },
 			}
 
 			local handlers = {

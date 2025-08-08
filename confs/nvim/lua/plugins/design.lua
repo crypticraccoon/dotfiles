@@ -19,7 +19,8 @@ return {
 			},
 			scope = { enabled = false },
 
-		},
+		}
+
 	},
 	{
 		"preservim/nerdtree",
@@ -75,7 +76,6 @@ return {
 			}
 		end,
 	},
-
 	{
 		'rcarriga/nvim-notify',
 		config = function(_, opts)
@@ -109,9 +109,6 @@ return {
 		lazy = false,
 		priority = 1000,
 		config = function()
-			require('bamboo').setup {
-				-- optional configuration here
-			}
 			vim.opt.background = "dark"
 		end,
 	},
@@ -138,8 +135,8 @@ return {
 
 	{
 		"xiyaowong/transparent.nvim",
-		config = function()
-			require("transparent").setup({
+		opts = function()
+			return {
 				-- table: default groups
 				groups = {
 					'Normal', 'NormalNC', 'Comment', 'Constant', 'Special', 'Identifier',
@@ -155,51 +152,20 @@ return {
 				-- function: code to be executed after highlight groups are cleared
 				-- Also the user event "TransparentClear" will be triggered
 				on_clear = function() end,
-			})
+			}
 		end
 	},
 	{
 		"AlexvZyl/nordic.nvim",
-		config = function()
-			require("nordic").setup({
+		opts = function()
+			return {
 				transparent = {
-					-- Enable transparent background.
 					bg = false,
-					-- Enable transparent background for floating windows.
 					float = false,
 				},
 				bright_border = false,
 				swap_backgrounds = true,
-			})
+			}
 		end
 	}
-	--{
-	--"folke/twilight.nvim",
-	----opts = {
-	------expand = { -- for treesitter, we we always try to expand to the top-most ancestor with these types
-	------"fn",
-	------"func",
-	------"function",
-	------"method",
-	------"table",
-	------"if_statement",
-	------},
-	------ your configuration comes here
-	------ or leave it empty to use the default settings
-	------ refer to the configuration section below
-	----},
-	--config = function()
-	--require("twilight").setup({
-	--expand = {
-	----"fn",
-	----"func",
-	--"function",
-	--"method",
-	--"table",
-	--"if_statement",
-	--},
-	--})
-	--vim.cmd([[ Twilight ]])
-	--end
-	--}
 }
