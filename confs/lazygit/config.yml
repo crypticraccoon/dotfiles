@@ -304,7 +304,7 @@ git:
   skipHookPrefix: WIP
 
   # If true, periodically fetch from remote
-  autoFetch: true
+  autoFetch: false
 
   # If true, periodically refresh files and submodules
   autoRefresh: true
