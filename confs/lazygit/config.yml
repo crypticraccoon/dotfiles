@@ -460,7 +460,16 @@ disableStartupPopups: false
 
 # User-configured commands that can be invoked from within Lazygit
 # See https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Command_Keybindings.md
-customCommands: []
+customCommands:
+  - key: '<c-L>'
+    context: 'files'
+    description: 'Push via PAT'
+    prompts:
+      - type: 'input'
+        key: 'Pat'
+        title: 'PAT'
+        initialValue: ''
+    command: "git push  https://{{.Form.Pat}}@github.com/$(echo {{index .SelectedRemote.Urls 0}} | sed -e 's|^.*github.com/||' -e 's|/.*$||')/{{.SelectedWorktree.Name}}.git {{.SelectedLocalBranch.Name}}"
 
 # See https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md#custom-pull-request-urls
 services: {}
