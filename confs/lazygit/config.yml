@@ -478,7 +478,7 @@ promptToReturnFromSubprocess: true
 # Keybindings
 keybinding:
   universal:
-    quit: <c-q>
+    quit: <c-z>
     quit-alt1: <c-c>
     return: <esc>
     quitWithoutChangingDirectory: Q
