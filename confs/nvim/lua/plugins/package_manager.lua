@@ -123,19 +123,7 @@ return {
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
 			capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-
-			require 'lspconfig'.cssls.setup {
-				capabilities = capabilities,
-			}
-			require 'lspconfig'.html.setup {
-				capabilities = capabilities,
-			}
-
 			local nvim_lsp = require('lspconfig')
-			nvim_lsp.denols.setup {
-				on_attach = on_attach,
-				root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc"),
-			}
 
 			nvim_lsp.ts_ls.setup {
 				on_attach = on_attach,
