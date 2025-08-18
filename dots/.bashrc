@@ -45,8 +45,9 @@ export FZF_DEFAULT_COMMAND='fd
 #============================================
 #		Paths
 #============================================
-PATH=$PATH:${HOME}/.cargo/bin
 PATH="${PATH}:${HOME}/.local/bin/"
+PATH="${PATH}:${HOME}/.cargo/bin/"
+
 
 PATH=$PATH:/usr/local/go/bin
 PATH="$PATH:${HOME}/personal/programs/flutter/bin"
@@ -126,5 +127,4 @@ git="\[\e[31m\]\`parse_git_branch\`\[\e[m\]"
 prompt="\[\033[01;38;5;8m\]>\[\033[01;38;5;9m\]>\[\033[01;38;5;10m\]> \[\033[01;38;5;15m\]"
 
 PS1="\n\[[\033[01;38;5;014m\]󰘧\e[0m] $directory$git $(docker_context)  \n$prompt"
-
 
