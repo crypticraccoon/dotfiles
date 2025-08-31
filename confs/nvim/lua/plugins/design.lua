@@ -1,4 +1,15 @@
 local vim = vim
+local colors = {
+	blue = "#83a598",
+	green = "#8ec07c",
+	violet = "#d3869b",
+	yellow = "#d8a657",
+	red = "#FF4A4A",
+	cream = "#fff4d2",
+	black = "#1d1d1d",
+	grey = "#393939",
+	dark = "#292929",
+}
 
 return {
 	{
@@ -64,15 +75,59 @@ return {
 	{
 		'nvim-lualine/lualine.nvim',
 		opts = function()
-			require "lualine".setup {
+			return {
 				options = {
-					--theme = 'sonokai',
-					--theme = 'oxocarbon',
+					globalstatus = true,
 					theme = 'gruvbox-material',
 					section_separators = '',
 					component_separators = ''
 
-				}
+				},
+				sections = {
+					lualine_a = {
+						"mode",
+					},
+					lualine_b = {
+						{
+							"buffers",
+							buffers_color = {
+								active = { bg = colors.yellow, fg = colors.black, gui = "bold" },
+								inactive = { bg = colors.grey, fg = colors.cream, gui = "italic" },
+							},
+							symbols = {
+								modified = " ●",
+								alternate_file = "",
+								directory = "",
+							},
+							mode = 2,
+						},
+						--{
+						--"filename",
+						--file_status = true,
+						--path = 3,
+						--shorting_target = 0,
+						--},
+					},
+					lualine_c = {
+					},
+
+					lualine_x = {
+						"filesize",
+						"branch",
+						"diff",
+						"diagnostics",
+					},
+					lualine_y = {
+						"searchcount",
+						"selectioncount",
+						"encoding",
+						"filetype",
+					},
+					lualine_z = {
+						"progress",
+						"location",
+					},
+				},
 			}
 		end,
 	},

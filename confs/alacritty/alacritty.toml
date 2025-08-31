@@ -1,8 +1,11 @@
 general.import=["~/.config/alacritty/colorschemes/gruvbox/material.toml"]
+
 [font]
-normal = {family = "JetBrainsMono Nerd Font Propo", style  = "regular"}
-#asdad
-size = 18
+normal = { family = "JetBrainsMono Nerd Font Propo", style  = "SemiBold" }
+bold= { family = "JetBrainsMono Nerd Font Propo", style  = "ExtraBold" }
+italic= { family = "JetBrainsMono Nerd Font Propo", style  = "SemiBold Italic" }
+bold_italic= { family = "JetBrainsMono Nerd Font Propo", style  = "ExtraBold Italic" }
+size = 12
 
 [env]
 term = "xterm-256color"
@@ -18,7 +21,6 @@ decorations = "None"
 [window.padding]
 x = 15
 y = 15
-
 
 
 [keyboard]

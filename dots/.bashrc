@@ -3,6 +3,8 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+eval "$(zoxide init bash)"
+
 #Source
 
 source /usr/share/bash-completion/completions/dkms 

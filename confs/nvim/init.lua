@@ -58,7 +58,7 @@ map("v", "K", ":m '<-2<CR>gv=gv")
 
 require("config.lazy")
 
-set.showtabline = 2
+set.showtabline = 0
 
 vim.cmd.colorscheme('gruvbox-material')
 --api.nvim_set_hl(0, "Folded", { bg="none", fg="#cb775d"})
