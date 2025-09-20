@@ -7,7 +7,6 @@ eval "$(zoxide init bash)"
 
 #Source
 
-source /usr/share/bash-completion/completions/dkms 
 source /usr/share/git/git-prompt.sh
 source ${HOME}/.alias
 #============================================
