@@ -34,12 +34,6 @@ return {
 
 	},
 	{
-		"preservim/nerdtree",
-		config = function()
-			vim.keymap.set("n", "<C-n>", ":NERDTreeToggle<CR>")
-		end
-	},
-	{
 		'nvim-treesitter/nvim-treesitter',
 		build = ":TSUpdate",
 		opts = function()
@@ -86,6 +80,7 @@ return {
 				sections = {
 					lualine_a = {
 						"mode",
+						"tabs",
 					},
 					lualine_b = {
 						{
@@ -222,5 +217,7 @@ return {
 				swap_backgrounds = true,
 			}
 		end
-	}
+	},
+
+
 }

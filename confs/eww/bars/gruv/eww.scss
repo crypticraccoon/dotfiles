@@ -8,49 +8,89 @@ $color: lightgray;
   color: $color;
 }
 
-label {
-  font-weight: 200;
-  font-size: 14px;
-  color: lightgray;
-  text-shadow: 1px 1px 2px #8f8f8f;
+$barBG: rgba(24, 24, 24, 1);
+$itemBG: #272727;
+$barBorderRadius: 5px;
+
+* {
+  font-family: "JetBrainsMono NFP";
+  font-weight: bold;
 }
 
+window {
+  background-color: $barBG;
+  border-radius: $barBorderRadius;
 
-
-
-button {
-  border-radius: $radius;
-  padding: 15px;
-  margin: 10px
-}
-
-.icon {
-  font-size: 24px;
-}
-
-trough highlight {
-  background-image: linear-gradient(to right, #000 20%, #aeaeae 50%, darkgrey 100% *50);
-  border-radius: 4px;
-}
-
-scale trough {
-  all: unset;
-  box-shadow: 0 4px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 20px 0 rgba(0, 0, 0, 0.19);
-  background-color: $accent1;
-  min-height: 3px;
-  min-width: 70px;
-  margin: 0px 10px 0px 5px;
-}
-
-
-.date {
-  >.date {
-    font-size: 36px;
-    font-weight: bold;
+  .bar {
+    margin: 0 3px;
   }
 
-  >.time label {
-    font-size: 72px;
-    font-weight: bolder;
+  .start,
+  .center,
+  .end {
+    //background-color: #fff;
+    margin: 5px 0;
   }
+
+  .icon {
+    all: unset;
+    color: red;
+  }
+
+  .item {
+    border-radius: 3px;
+    background-color: $itemBG;
+    border: 3px solid #5c5c5c;
+    padding: 5px 10px;
+    margin: 0 2px;
+  }
+
+
 }
+
+//label {
+//font-weight: 200;
+//font-size: 14px;
+//color: lightgray;
+//text-shadow: 1px 1px 2px #8f8f8f;
+//}
+
+
+
+
+//button {
+//border-radius: $radius;
+//padding: 15px;
+//margin: 10px
+//}
+
+//.icon {
+//font-size: 24px;
+//}
+
+//trough highlight {
+//background-image: linear-gradient(to right, #000 20%, #aeaeae 50%, darkgrey 100% *50);
+//border-radius: 4px;
+//}
+
+//scale trough {
+//all: unset;
+//box-shadow: 0 4px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 20px 0 rgba(0, 0, 0, 0.19);
+//background-color: $accent1;
+//min-height: 3px;
+//min-width: 70px;
+//margin: 0px 10px 0px 5px;
+//}
+
+
+//.date {
+//>.date {
+//font-size: 36px;
+//font-weight: bold;
+//}
+
+//>.time label {
+//font-size: 72px;
+//font-weight: bolder;
+//}
+//}

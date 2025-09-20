@@ -4,14 +4,14 @@ return {
 		opts = function()
 			require("mason").setup()
 			require("mason-lspconfig").setup()
-			require("mason-lspconfig").setup_handlers {
-				function(server_name) -- default handler (optional)
-					require("lspconfig")[server_name].setup {
-						handlers = handlers,
-						on_attach = on_attach,
-					}
-				end,
-			}
+			--require("mason-lspconfig").setup_handlers {
+				--function(server_name) -- default handler (optional)
+					--require("lspconfig")[server_name].setup {
+						--handlers = handlers,
+						--on_attach = on_attach,
+					--}
+				--end,
+			--}
 			vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
 			vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 			vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
@@ -78,11 +78,6 @@ return {
 				filetypes = { "py" },
 			})
 
-			require("lspconfig").qmlls.setup({
-				filetypes = { "qml" }
-			})
-
-
 			require("lspconfig").docker_compose_language_service.setup({
 				filetypes = { "yaml" }
 			})
@@ -93,6 +88,11 @@ return {
 					client.server_capabilities.documentRangeFormattingProvider = false
 				end
 
+			})
+
+			require("lspconfig")["qmlls"].setup({
+				cmd = { "qmlls6", "-E" },
+				filetypes = { "qml" }
 			})
 
 			--DART LSP, requires dart

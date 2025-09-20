@@ -1,13 +1,16 @@
 (defwindow bar
 	 :monitor 0
-	 :geometry (geometry :x "100%"
-			 :y "0"
-			 :width "100%"
-			 :height "75"
+	 :geometry (geometry 
+			 :x "0px"
+			 :y "10px"
+			 :width "98%"
+			 :height "45"
 			 :anchor "top center")
-	 :stacking "bg"
+	 :stacking "fg"
 	 :namespace "overlay"
 	 :wm-ignore false
+	 :exclusive true
+	 :windowtype "dock"
 	 (bar)
 )
 
@@ -53,42 +56,58 @@
 (defpoll DATE :interval "60s" "date '+%a %d %b, %Y'")
 
 
-
-(defwidget bar[]
-	 (box 
-			:class "bar"
-			:orientation "v"
-			(right)
+(defwidget bar []
+	 (centerbox :orientation "h" 
+			(start) 
+			(center) 
+			(end)
 	 )
 )
 
-;;(defwidget left[])
-
-(defwidget right[]
-	  (box
-			:class "top"
-			:vexpand false
-
-			(box 
-				 :class "topLeft" 
-				 :valign "start" 
-				 :halign "start" 
-				 :orientation "h"
-				 :space-evenly false
-				 (time)
-				 (cpu)
-				 (gpu)
-				 (memory)
-			)
-			(box
-				 :class "topRight"
-				 :orientation "h"
-				 :valign "start" 
-				 :halign "end"
-				 :space-evenly false
-				 (sysControls)
-			)
+(defwidget start []
+	 (box
+			:class "start"
+			:hexpand true
+			:halign "start"
+			(label :text "asd")
 	 )
-
 )
+
+(defwidget center []
+	 (box
+			:class "center"
+			(label :text "asds")
+	 )
+)
+
+(defwidget end []
+	 (box
+			:class "end"
+			:halign "end"
+			:hexpand true
+			(item :icon "󰥔" :value "${HOUR}:${MINUTE}" )
+			(item :icon "󰥔" :value "${HOUR}:${MINUTE}" )
+
+	 )
+)
+(defwidget item [icon value] 
+	 (box
+			:class "item"
+			:orientation "h"             
+			:halign "center"
+			;;(label :class "icon" :text "${icon}")
+			(label :text "${icon}${value}")
+	 )
+)
+
+(defwidget eventItem [icon value onClick] 
+	 (box
+			:class "item"
+			:orientation "h"             
+			:halign "center"
+			;;(label :class "icon" :text "${icon}")
+			(label :text "${icon}${value}")
+	 )
+)
+
 

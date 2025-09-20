@@ -1,11 +1,12 @@
 general.import=["~/.config/alacritty/colorschemes/gruvbox/material.toml"]
 
 [font]
-normal = { family = "JetBrainsMono Nerd Font Propo", style  = "SemiBold" }
+normal = { family = "FiraCode", style  = "SemiBold" }
+#normal = { family = "JetBrainsMono Nerd Font Propo", style  = "SemiBold" }
 bold= { family = "JetBrainsMono Nerd Font Propo", style  = "ExtraBold" }
 italic= { family = "JetBrainsMono Nerd Font Propo", style  = "SemiBold Italic" }
 bold_italic= { family = "JetBrainsMono Nerd Font Propo", style  = "ExtraBold Italic" }
-size = 12
+size = 11
 
 [env]
 term = "xterm-256color"
