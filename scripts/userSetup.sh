@@ -2,19 +2,22 @@
 
 aurMangerUrl="https://aur.archlinux.org/paru.git"
 userPackages="man-db fzf wayland hyprland neovim firefox docker docker-compose git brightnessctl pulseaudio pipewire-jack pipewire-bluetooth hyprpaper xdg-desktop-portal-hyprland pavucontrol dunst grim slurp wl-clipboard jq yazi evtest eza ripgrep rofi-wayland tree-sitter wev wl-clip-persist lazygit lazydocker fd bluez bluez-utils"
-webDevSpecific="go typescript"
-fontPackages="ttf-fira-sans ttf-noto-nerd ttf-fira-mono ttf-firacode-nerd ttf-jetbrains-mono ttf-nerd-fonts-symbols adobe-source-han-sans-cn-fonts"
-aurPackages="btm eww"
+webDevSpecific="go typescript dart"
+fontPackages="ttf-fira-sans ttf-noto-nerd ttf-fira-mono ttf-firacode-nerd ttf-jetbrains-mono ttf-nerd-fonts-symbols adobe-source-han-sans-cn-fonts ttf-fira-code ttf-jetbrains-mono-nerd"
+aurPackages="btm eww xremap-hypr-bin"
 
 getPackages(){
-	 sudo pacman -S $userPackages $webDevSpecific $fontPackages 
+	 sudo pacman -S $userPackages $webDevSpecific 
+}
+
+installRust(){
+	 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh 
 }
 
 installAur() {
 	 if [[ ! -f /bin/paru ]]; then 
-			curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh &&
-			cd ${home}/personal/programs
-			cd paru && makepkg -si && paru -S $aurPackages
+     git clone $aurMangerUrl ${HOME}/personal/programs/paru
+	   cd ${HOME}/personal/programs/paru && makepkg -si && paru -S $aurPackages $fontPackages 
 	 fi
 }
 
@@ -62,8 +65,9 @@ setupBar(){
 }
 
 startServices(){
+	 sudo systemctl enable bluetooth
 	 sudo systemctl start bluetooth
 }
 
-getPackages && installAur && setupTmux && setupDots && setupBar && startServices
+getPackages && installRust && installAur && setupTmux && setupDots && setupBar && startServices
 

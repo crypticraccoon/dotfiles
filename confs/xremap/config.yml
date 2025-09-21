@@ -2,3 +2,5 @@ modmap:
  - name: Global
    remap: 
     Capslock: Esc
+    Super_L: Alt_L
+    Alt_L: Super_L

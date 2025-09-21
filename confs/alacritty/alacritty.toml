@@ -6,7 +6,7 @@ normal = { family = "FiraCode", style  = "SemiBold" }
 bold= { family = "JetBrainsMono Nerd Font Propo", style  = "ExtraBold" }
 italic= { family = "JetBrainsMono Nerd Font Propo", style  = "SemiBold Italic" }
 bold_italic= { family = "JetBrainsMono Nerd Font Propo", style  = "ExtraBold Italic" }
-size = 11
+size = 10
 
 [env]
 term = "xterm-256color"
