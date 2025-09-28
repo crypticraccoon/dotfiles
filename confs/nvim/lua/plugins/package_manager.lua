@@ -5,12 +5,12 @@ return {
 			require("mason").setup()
 			require("mason-lspconfig").setup()
 			--require("mason-lspconfig").setup_handlers {
-				--function(server_name) -- default handler (optional)
-					--require("lspconfig")[server_name].setup {
-						--handlers = handlers,
-						--on_attach = on_attach,
-					--}
-				--end,
+			--function(server_name) -- default handler (optional)
+			--require("lspconfig")[server_name].setup {
+			--handlers = handlers,
+			--on_attach = on_attach,
+			--}
+			--end,
 			--}
 			vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
 			vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
@@ -77,6 +77,15 @@ return {
 			require("lspconfig").pyright.setup({
 				filetypes = { "py" },
 			})
+
+			require("lspconfig").lua_ls.setup({
+				filetypes = { "lua" },
+			})
+
+			require("lspconfig").bashls.setup({
+				filetypes = { "sh" },
+			})
+
 
 			require("lspconfig").docker_compose_language_service.setup({
 				filetypes = { "yaml" }
