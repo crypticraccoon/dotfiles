@@ -6,7 +6,7 @@
 eval "$(zoxide init bash)"
 
 #Source
-
+#source /usr/share/nvm/init-nvm.sh
 source /usr/share/git/git-prompt.sh
 source ${HOME}/.alias
 #============================================
@@ -52,7 +52,7 @@ PATH="${PATH}:${HOME}/.cargo/bin/"
 
 PATH=$PATH:/usr/local/go/bin
 PATH="$PATH:${HOME}/personal/programs/flutter/bin"
-PATH="$PATH:${HOME}/Android/Sdk/tools/bin"
+PATH="$PATH:${HOME}/Android/Sdk/platform-tools"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 bind -x '"\C-t":`__fzf_cd__`'

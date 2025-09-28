@@ -1,8 +1,8 @@
 #!/bin/bash
 
 aurMangerUrl="https://aur.archlinux.org/paru.git"
-userPackages="man-db fzf wayland hyprland neovim firefox docker docker-compose git brightnessctl pulseaudio pipewire-jack pipewire-bluetooth hyprpaper xdg-desktop-portal-hyprland pavucontrol dunst grim slurp wl-clipboard jq yazi evtest eza ripgrep rofi-wayland tree-sitter wev wl-clip-persist lazygit lazydocker fd bluez bluez-utils diff-so-fancy duf wget"
-webDevSpecific="go typescript dart"
+userPackages="man-db fzf wayland hyprland neovim firefox docker docker-compose git brightnessctl pulseaudio pipewire-jack pipewire-bluetooth hyprpaper xdg-desktop-portal-hyprland pavucontrol dunst grim slurp wl-clipboard jq yazi evtest eza ripgrep rofi-wayland tree-sitter wev wl-clip-persist lazygit lazydocker fd bluez bluez-utils diff-so-fancy duf wget nvm"
+webDevSpecific="go typescript dart jdk-openjdk"
 fontPackages="ttf-fira-sans ttf-noto-nerd ttf-fira-mono ttf-firacode-nerd ttf-jetbrains-mono ttf-nerd-fonts-symbols adobe-source-han-sans-cn-fonts ttf-fira-code ttf-jetbrains-mono-nerd"
 aurPackages="btm eww xremap-hypr-bin"
 
@@ -19,20 +19,6 @@ installAur() {
      git clone $aurMangerUrl ${HOME}/personal/programs/paru
 	   cd ${HOME}/personal/programs/paru && makepkg -si && paru -S $aurPackages $fontPackages 
 	 fi
-}
-
-setupTmux(){
-	 if [[ ! -d ~/.tmux/plugins/tpm ]]; then
-			git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-	 fi
-}
-
-setupDocker(){
-	 sudo systemctl enable docker
-	 sudo systemctl start docker
-	 sudo groupadd docker
-	 sudo usermod -aG docker $(whoami)
-	 newgrp docker
 }
 
 setupDots(){
@@ -62,16 +48,28 @@ setupTmux(){
 	 git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
 }
 
-setupBar(){
-	 if [[ -f /bin/eww ]];then
-			ln -sr ${HOME}/personal/dotfiles/confs/eww/bars/overlay ${HOME}/.config/eww
-	 fi
-}
+#setupBar(){
+	 #if [[ -f /bin/eww ]];then
+			#ln -sr ${HOME}/personal/dotfiles/confs/eww/bars/overlay ${HOME}/.config/eww
+	 #fi
+#}
 
 startServices(){
 	 sudo systemctl enable bluetooth
 	 sudo systemctl start bluetooth
 }
 
-getPackages && installRust && installAur && setupTmux && setupDots && setupBar && startServices
+postSetup(){
+	 nvm install node
+	 npm install -g npm
+
+	 sudo systemctl enable docker
+	 sudo systemctl start docker
+	 sudo groupadd docker
+	 sudo usermod -aG docker $(whoami)
+	 newgrp docker
+
+}
+
+getPackages && installRust && installAur && setupTmux && setupDots && setupBar && startServices && postSetup
 
