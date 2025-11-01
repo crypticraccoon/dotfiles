@@ -81,6 +81,21 @@ return {
 			require("lspconfig").lua_ls.setup({
 				filetypes = { "lua" },
 			})
+			require("lspconfig").jsonls.setup({
+				filetypes = { "json" },
+			})
+
+			require("lspconfig")["gopls"].setup({
+				 cmd = { "gopls" },
+
+				filetypes = { "go" },
+			})
+
+
+			require("lspconfig").dockerls.setup({
+				filetypes = { "dockerfile" },
+			})
+
 
 			require("lspconfig").bashls.setup({
 				filetypes = { "sh" },

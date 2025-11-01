@@ -50,7 +50,7 @@ PATH="${PATH}:${HOME}/.local/bin/"
 PATH="${PATH}:${HOME}/.cargo/bin/"
 
 
-PATH=$PATH:/usr/local/go/bin
+PATH=$PATH:${HOME}/go/bin
 PATH="$PATH:${HOME}/personal/programs/flutter/bin"
 PATH="$PATH:${HOME}/Android/Sdk/platform-tools"
 
