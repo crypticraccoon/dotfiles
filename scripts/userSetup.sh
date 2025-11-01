@@ -1,10 +1,12 @@
 #!/bin/bash
 
 aurMangerUrl="https://aur.archlinux.org/paru.git"
-userPackages="man-db fzf wayland hyprland neovim firefox docker docker-compose git brightnessctl pulseaudio pipewire-jack pipewire-bluetooth hyprpaper xdg-desktop-portal-hyprland pavucontrol dunst grim slurp wl-clipboard jq yazi evtest eza ripgrep rofi-wayland tree-sitter wev wl-clip-persist lazygit lazydocker fd bluez bluez-utils diff-so-fancy duf wget nvm"
+userPackages="man-db fzf wayland neovim firefox docker docker-compose git brightnessctl pulseaudio pipewire-jack pavucontrol dunst grim slurp wl-clipboard jq yazi evtest eza ripgrep rofi-wayland tree-sitter wev wl-clip-persist lazygit lazydocker fd bluez bluez-utils diff-so-fancy duf wget swww niri zoxide keyd"
 webDevSpecific="go typescript dart jdk-openjdk"
 fontPackages="ttf-fira-sans ttf-noto-nerd ttf-fira-mono ttf-firacode-nerd ttf-jetbrains-mono ttf-nerd-fonts-symbols adobe-source-han-sans-cn-fonts ttf-fira-code ttf-jetbrains-mono-nerd"
-aurPackages="btm eww xremap-hypr-bin"
+aurPackages="btm xremap-hypr-bin"
+
+#https://archlinux.org/mirrorlist/?country=CA&protocol=http&protocol=https&ip_version=4&ip_version=6
 
 getPackages(){
 	 sudo pacman -S $userPackages $webDevSpecific 
@@ -71,5 +73,4 @@ postSetup(){
 
 }
 
-getPackages && installRust && installAur && setupTmux && setupDots && setupBar && startServices && postSetup
-
+getPackages && installRust && installAur && setupTmux && setupDots && startServices && postSetup
