@@ -1,0 +1,4 @@
+module design
+singleton WidgetStyle 1.0 WidgetStyle.qml
+singleton ColorScheme 1.0 ColorScheme.qml
+FloatingOSD 1.0 FloatingOSD.qml

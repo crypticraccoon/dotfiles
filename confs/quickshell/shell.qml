@@ -1,134 +1,82 @@
-import qs.modules.popups
+import QtQuick 2.15
+import QtQuick.Controls 2.15
+import QtQuick.Layouts 1.15
 import Quickshell
-import QtQuick  // for Text
-import Quickshell.Io // for Process
-import Quickshell.Hyprland
-import QtQuick.Controls
-import QtQuick.Layouts
+import Quickshell.Services.UPower
+import "widgets/bar"
+import "widgets/panel"
+import "widgets/osd"
+import "theme" as Theme
 
-//import qs.modules.bar as Bar
+Scope {
+    // Floating OSD widgets (not in panel)
+    VolumeOSD {
+        id: volumeOSD
+    }
 
-ShellRoot {
-    VolumePopUp {}
-    PanelWindow {
+    BrightnessOSD {
+        id: brightnessOSD
+    }
 
-        anchors {
-            top: true
-            left: true
-            right: true
-        }
+    Variants {
+        model: Quickshell.screens
 
-        implicitHeight: 40
-        color: "#1f1f1fff"
-        //color: "rgba(0, 209, 178, 1)"
-
-        //Text {
-        //id: clock
-        //color: "white"
-        ////anchors.centerIn: parent
-
-        //Timer {
-        //interval: 1000
-        //running: true
-        //repeat: true
-        //onTriggered: clockProc.running = true
-        //}
-
-        //Rectangle {
-        //implicitWidth: 80
-        //color: "red"
-        //implicitHeight: 40
-        //}
-
-        //Rectangle {
-        //implicitWidth: 60
-        //color: "green"
-        //implicitHeight: 75
-        //}
-        //Process {
-        //id: clockProc
-
-        //command: ["date", "+%a %d %B %Y | %T"]
-
-        //running: true
-
-        //stdout: StdioCollector {
-        //onStreamFinished: clock.text = this.text
-        //}
-        //}
-        //Row {
-
-        //function x() {
-        //}
-
-        ////Text {
-        ////id: b
-        ////text: qsTr("text")
-        ////}
-        //Button {
-        //text: "click me"
-        //onClicked: bb += 1
-        //}
-
-        //Text {
-        //id: a
-        //text: "" + bb + ""
-        //}
-        //}
-
-        ////ColumnLayout {
-        ////Quick.Text {
-        ////id: text
-        ////text: "Hello World!"
-        ////}
-
-        ////Quick.Button {
-        ////text: "Make the text red"
-        ////onClicked: text.color = "red"
-        ////}
-        ////}
-        //}
-
-        RowLayout {
-            id: m
-            property int bb: 0
-            anchors.fill: parent
-
-            Text {
-                id: left
-                text: m.bb
-                color: "red"
+        PanelWindow {
+            id: bar
+            objectName: "bar"
+            anchors {
+                top: true
+                left: true
+                right: true
             }
+            implicitHeight: 30
 
-            Button {
-                id: button
-                onClicked: {
-                    m.bb + 1;
+            required property var modelData
+            screen: modelData
+            color: "#101010"
+
+            Item {
+                id: panelContent
+                anchors.fill: parent
+
+                RowLayout {
+                    anchors {
+                        right: parent.right
+                        verticalCenter: parent.verticalCenter
+                        // rightMargin: 8
+                    }
+                    spacing: Theme.WidgetStyle.widgetSpacing
+
+                    TimeWidget {
+                        id: clockWidget
+                    }
+
+                    // Spacer pushes widgets to the right
+                    Item {
+                        Layout.fillWidth: true
+                    }
+
+                    NetworkWidget {
+                        id: networkWidget
+                        height: 30
+                    }
+
+                    PowerProfileWidget {
+                        id: profileWidget
+                        height: 30
+                    }
+
+                    BatteryWidget {
+                        id: batteryWidget
+                        height: 30
+                    }
+
+                    ClockWidget {
+                        id: clockWidge
+                        height: 30
+                    }
                 }
-                text: "Hellow"
             }
         }
-        //FloatingWindow {
-
-        ////Timer {
-        ////// assign an id to the object, which can be
-        ////// used to reference it
-        ////id: timer
-        ////property bool invert: false // a custom property
-
-        ////// change the value of invert every half second
-        ////running: true
-        ////repeat: true
-        ////interval: 500 // ms
-        ////onTriggered: timer.invert = !timer.invert
-        ////}
-
-        //// change the window's color when timer.invert changes
-        //color: "green"
-        //Text {
-        //id: "s"
-        //text: qsTr("text")
-        //}
-        //}
     }
 }

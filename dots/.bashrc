@@ -15,11 +15,10 @@ source ${HOME}/.alias
 export ELECTRON_OZONE_PLATFORM_HINT=auto 
 export ELECTRON_USE_ANGLE=vulkan
 export ELECTRON_ENABLE_FEATURES=Vulkan
-
 export CHROME_EXECUTABLE=/bin/chromium
 export _JAVA_AWT_WM_NONREPARENTING=1
 export ANDROID_HOME=${HOME}/Android/Sdk
-export NDK_HOME=${HOME}/Android/Sdk/ndk/27.0.12077973
+#export NDK_HOME=${HOME}/Android/Sdk/ndk/27.0.12077973
 
 export LESS='-R --use-color -Dd+r$Du+b'
 export EDITOR=/usr/bin/nvim

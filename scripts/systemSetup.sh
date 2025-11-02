@@ -14,6 +14,7 @@ userSetup() {
 	 passwd
 	 mkdir -p /home/${username}/{personal/programs,trash}
 	 sed 'i/# %wheel ALL=(ALL:ALL) NOPASSWD: ALL/%wheel ALL=(ALL:ALL) NOPASSWD: ALL/g'
+	 timedatectl set-ntp true
 }
 
 

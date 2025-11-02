@@ -1,15 +1,18 @@
 #!/bin/bash
 
 aurMangerUrl="https://aur.archlinux.org/paru.git"
-userPackages="man-db fzf wayland neovim firefox docker docker-compose git brightnessctl pulseaudio pipewire-jack pavucontrol dunst grim slurp wl-clipboard jq yazi evtest eza ripgrep rofi-wayland tree-sitter wev wl-clip-persist lazygit lazydocker fd bluez bluez-utils diff-so-fancy duf wget swww niri zoxide keyd"
-webDevSpecific="go typescript dart jdk-openjdk"
+userPackages="man-db fzf wayland neovim firefox docker docker-compose git brightnessctl pulseaudio pipewire-jack pavucontrol dunst grim slurp wl-clipboard jq yazi evtest eza ripgrep rofi-wayland tree-sitter wev wl-clip-persist lazygit lazydocker fd bluez bluez-utils bluetui diff-so-fancy duf wget swww niri zoxide keyd clang cmake ninja mesa-utils mesa unzip udisks2"
+
+gpuSpecific="mesa mesa-utils vulkan vulkan-inter vulkan-nouveau vulkan-tools nvidi-open"
+
+webDevSpecific="go typescript jdk-openjdk"
 fontPackages="ttf-fira-sans ttf-noto-nerd ttf-fira-mono ttf-firacode-nerd ttf-jetbrains-mono ttf-nerd-fonts-symbols adobe-source-han-sans-cn-fonts ttf-fira-code ttf-jetbrains-mono-nerd"
 aurPackages="btm xremap-hypr-bin"
 
 #https://archlinux.org/mirrorlist/?country=CA&protocol=http&protocol=https&ip_version=4&ip_version=6
 
 getPackages(){
-	 sudo pacman -S $userPackages $webDevSpecific 
+	 sudo pacman -S $userPackages $webDevSpecific $gpuSpecific
 }
 
 installRust(){
@@ -41,7 +44,7 @@ setupDots(){
 	 ln -sr ${HOME}/personal/dotfiles/confs/tmux ${HOME}/.config/tmux
 	 ln -sr ${HOME}/personal/dotfiles/confs/lazygit ${HOME}/.config/lazygit
 	 ln -sr ${HOME}/personal/dotfiles/confs/bottom ${HOME}/.config/bottom
-	 ln -sr ${HOME}/personal/dotfiles/confs/keyd ${HOME}/.config/keyd
+	 sudo ln -sr ${HOME}/personal/dotfiles/confs/keyd /etc/keyd
 
 }
 
@@ -57,16 +60,16 @@ setupTmux(){
 #}
 
 startServices(){
-	 sudo systemctl enable bluetooth
-	 sudo systemctl start bluetooth
+	 systemctl --user enable --now pipewire
+	 sudo systemctl enable --now bluetooth
+	 #sudo systemctl start bluetooth
 }
 
 postSetup(){
 	 nvm install node
 	 npm install -g npm
 
-	 sudo systemctl enable docker
-	 sudo systemctl start docker
+	 sudo systemctl enable --now docker
 	 sudo groupadd docker
 	 sudo usermod -aG docker $(whoami)
 	 newgrp docker
