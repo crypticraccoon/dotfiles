@@ -12,6 +12,13 @@ source ${HOME}/.alias
 #============================================
 #		Env Variables
 #============================================
+
+#STEAM https://www.protondb.com/help/improving-performance
+export __GL_THREADED_OPTIMIZATION=1
+export __GL_SHADER_DISK_CACHE=1
+export __GL_SHADER_DISK_CACHE_PATH=${HOME}/personal/games/shaders
+export PROTON_USE_D9VK=1
+
 export ELECTRON_OZONE_PLATFORM_HINT=auto 
 export ELECTRON_USE_ANGLE=vulkan
 export ELECTRON_ENABLE_FEATURES=Vulkan
@@ -41,20 +48,33 @@ export FZF_DEFAULT_COMMAND='fd
 	 --exclude node_modules 
 	 --exclude .npm
 	 '
+#============================================
+#		Docker
+#============================================
+
+#rootless
+#export DOCKER_HOST=unix:///run/user/1000/docker.sock
+
+#PS1 context info
+function docker_context {
+	 if [[ ! -f /bin/docker ]]; then 
+			echo "docker missing"
+	 else
+			echo "\$(docker context ls | awk '/*/{print \$1}')"
+	 fi
+}
 
 #============================================
 #		Paths
 #============================================
 PATH="${PATH}:${HOME}/.local/bin/"
 PATH="${PATH}:${HOME}/.cargo/bin/"
-
-
 PATH=$PATH:${HOME}/go/bin
 PATH="$PATH:${HOME}/personal/programs/flutter/bin"
 PATH="$PATH:${HOME}/Android/Sdk/platform-tools"
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-bind -x '"\C-t":`__fzf_cd__`'
+#[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+#bind -x '"\C-t":`__fzf_cd__`'
 
 #============================================
 #		PS1
@@ -114,14 +134,6 @@ function parse_git_dirty {
 		echo ""
 	fi
 }
-function docker_context {
-	 if [[ ! -f /bin/docker ]]; then 
-			echo "docker missing"
-	 else
-			echo "\$(docker context ls | awk '/*/{print \$1}')"
-	 fi
-}
-
 directory="\w"
 git="\[\e[31m\]\`parse_git_branch\`\[\e[m\]"
 prompt="\[\033[01;38;5;8m\]>\[\033[01;38;5;9m\]>\[\033[01;38;5;10m\]> \[\033[01;38;5;15m\]"

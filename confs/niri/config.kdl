@@ -67,8 +67,8 @@ input {
 
     // Focus windows and outputs automatically when moving the mouse into them.
     // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
-    // focus-follows-mouse max-scroll-amount="0%"
-    focus-follows-mouse
+    focus-follows-mouse max-scroll-amount="0%"
+    //focus-follows-mouse
     // mod-key "Super"
     // mod-key-nested "Alt"	 
 }
@@ -288,6 +288,7 @@ prefer-no-csd
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "dunst"
 spawn-at-startup "swww-daemon"
+spawn-at-startup "waybar"
 //spawn-sh-at-startup "${HOME}/personal/dotfiles/scripts/switchKeys.sh '${HOME}/personal/dotfiles/confs/xremap/config.yml' Keychron >/dev/null"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
@@ -363,6 +364,10 @@ window-rule {
 // (This example rule is commented out with a "/-" in front.)
 /-window-rule {
     geometry-corner-radius 12
+    clip-to-geometry true
+}
+window-rule {
+    geometry-corner-radius 5
     clip-to-geometry true
 }
 

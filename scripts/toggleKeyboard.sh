@@ -15,12 +15,14 @@ if [[ ! -f $sysFs ]];then
 	 exit 1
 fi
 
-echo $sysFs
+#echo $sysFs
 state=$(cat $sysFs)
 
-if [[ $itemState == "on" ]];then 
+if [[ $state == "0" ]];then 
 	 echo 1 | sudo tee $sysFs >/dev/null
-elif [[ $itemState == "off" ]];then
+	 echo '{"off":"󰌐"}'
+elif [[ $state == "1" ]];then
 	 echo 0 | sudo tee $sysFs >/dev/null
+	 echo '{"on": "󰌌"}'
 fi
 

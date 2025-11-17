@@ -1,5 +1,24 @@
 local vim = vim
 return {
+
+	--{
+		--'nvim-flutter/flutter-tools.nvim',
+		--lazy = false,
+		--dependencies = {
+			--'nvim-lua/plenary.nvim',
+			--'stevearc/dressing.nvim',
+			--'nvim-telescope/telescope.nvim',
+		--},
+		--config = true,
+		--opts = function()
+			--local builtin = require('telescope')
+
+			--vim.keymap.set('n', '<space>a', builtin.extensions.flutter.commands, {})
+			----vim.keymap.set('n', '<space>fs', vim.lsp.buf.code_action, { desc = "Code action" })
+			----vim.keymap.set('x', '<leader>fs', vim.lsp.buf.range_code_action, {})
+		--end,
+
+	--},
 	{
 		"nvim-lua/plenary.nvim"
 	},
@@ -29,10 +48,11 @@ return {
 		tag = '0.1.8',
 		opts = function()
 			local builtin = require('telescope.builtin')
-			vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-			vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-			vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-			vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+			vim.keymap.set('n', '<space>ff', builtin.find_files, {})
+			vim.keymap.set('n', '<space>fg', builtin.live_grep, {})
+			--vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+			vim.keymap.set('n', '<sapce>fh', builtin.help_tags, {})
+
 
 
 			local telescopeConfig = require("telescope.config")
@@ -84,6 +104,13 @@ return {
 	{
 		"tiagovla/scope.nvim",
 		config = function()
+			vim.keymap.set(
+				'n',
+				'<space>fb',
+				'<Cmd>Telescope scope buffers<CR>',
+				{ desc = "Telescope: Find buffers" }
+			)
+
 			require "scope".setup()
 		end
 	},

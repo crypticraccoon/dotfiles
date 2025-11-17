@@ -3,6 +3,9 @@
 aurMangerUrl="https://aur.archlinux.org/paru.git"
 userPackages="man-db fzf wayland neovim firefox docker docker-compose git brightnessctl pulseaudio pipewire-jack pavucontrol dunst grim slurp wl-clipboard jq yazi evtest eza ripgrep rofi-wayland tree-sitter wev wl-clip-persist lazygit lazydocker fd bluez bluez-utils bluetui diff-so-fancy duf wget swww niri zoxide keyd clang cmake ninja mesa-utils mesa unzip udisks2"
 
+#bar="qt6-5compat qt5-graphicaleffects"
+#barAur="quickshell"
+
 gpuSpecific="mesa mesa-utils vulkan vulkan-inter vulkan-nouveau vulkan-tools nvidi-open"
 
 webDevSpecific="go typescript jdk-openjdk"

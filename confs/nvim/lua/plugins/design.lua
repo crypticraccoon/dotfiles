@@ -67,12 +67,15 @@ return {
 		"nyoom-engineering/oxocarbon.nvim"
 	},
 	{
+		"dasupradyumna/midnight.nvim",
+	},
+	{
 		'nvim-lualine/lualine.nvim',
 		opts = function()
 			return {
 				options = {
 					globalstatus = true,
-					theme = 'gruvbox-material',
+					theme = 'gruvbox',
 					section_separators = '',
 					component_separators = ''
 
@@ -80,11 +83,11 @@ return {
 				sections = {
 					lualine_a = {
 						"mode",
-						"tabs",
+						--"tabs",
 					},
 					lualine_b = {
 						{
-							"buffers",
+							--"buffers",
 							buffers_color = {
 								active = { bg = colors.yellow, fg = colors.black, gui = "bold" },
 								inactive = { bg = colors.grey, fg = colors.cream, gui = "italic" },
@@ -107,6 +110,7 @@ return {
 					},
 
 					lualine_x = {
+
 						"filesize",
 						"branch",
 						"diff",

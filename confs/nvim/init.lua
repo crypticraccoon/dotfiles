@@ -4,7 +4,6 @@ local cmd = vim.cmd
 local map = vim.keymap.set
 local opt = vim.opt
 local api = vim.api
-
 vim.loader.enable()
 vim.defer_fn(function() pcall(require, "impatient") end, 0)
 ---------------------------------DEFAULT OPTIONS
@@ -58,10 +57,10 @@ map("v", "K", ":m '<-2<CR>gv=gv")
 
 require("config.lazy")
 
-set.showtabline = 0
+--set.showtabline = 0
 
 vim.cmd.colorscheme('gruvbox-material')
+
 --api.nvim_set_hl(0, "Folded", { bg="none", fg="#cb775d"})
 
 set.syntax = "on"
-
