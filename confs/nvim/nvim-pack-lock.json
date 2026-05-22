@@ -4,6 +4,10 @@
       "rev": "39f06b873a8449af8ff6a3eee716d3da14d63a76",
       "src": "https://github.com/jiangmiao/auto-pairs"
     },
+    "autoclose.nvim": {
+      "rev": "bafd0368716216fa6a7bb2a43ecd889b44efdb46",
+      "src": "https://github.com/m4xshen/autoclose.nvim"
+    },
     "bamboo.nvim": {
       "rev": "1309bc88bffcf1bedc3e84e7fa9004de93da774a",
       "src": "https://github.com/ribru17/bamboo.nvim"

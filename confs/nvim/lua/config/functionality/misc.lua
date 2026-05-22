@@ -8,8 +8,9 @@ vim.pack.add({
 	"https://github.com/folke/todo-comments.nvim",
 	'https://github.com/preservim/nerdcommenter',
 	"https://github.com/rachartier/tiny-code-action.nvim",
-	--'https://github.com/jiangmiao/auto-pairs'
+	"https://github.com/m4xshen/autoclose.nvim",
 	--"https://github.com/nvim-treesitter/nvim-treesitter",
 })
 
 require("todo-comments").setup({})
+require("autoclose").setup({})
