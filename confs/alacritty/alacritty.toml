@@ -1,8 +1,7 @@
+#general.import=["~/.config/alacritty/colorschemes/rose_pine/dist/rose-pine-dawn.toml"]
 general.import=["~/.config/alacritty/colorschemes/gruvbox/material.toml"]
-
 [font]
-normal = { family = "FiraCode", style  = "SemiBold" }
-#normal = { family = "JetBrainsMono Nerd Font Propo", style  = "SemiBold" }
+normal = { family = "Iosevka Term SemiBold Extended", style  = "SemiBold" }
 bold= { family = "JetBrainsMono Nerd Font Propo", style  = "ExtraBold" }
 italic= { family = "JetBrainsMono Nerd Font Propo", style  = "SemiBold Italic" }
 bold_italic= { family = "JetBrainsMono Nerd Font Propo", style  = "ExtraBold Italic" }
