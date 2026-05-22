@@ -60,7 +60,7 @@ function docker_context {
 	 if [[ ! -f /bin/docker ]]; then 
 			echo "docker missing"
 	 else
-			echo "\$(docker context ls | awk '/*/{print \$1}')"
+			echo "\$(docker context ls | awk '/\*/{print \$1}')"
 	 fi
 }
 
@@ -129,14 +129,14 @@ function parse_git_dirty {
 		bits="!${bits}"
 	fi
 	if [ ! "$bits" == "" ]; then
-		echo " ${bits}"
+		echo "${bits}"
 	else
 		echo ""
 	fi
 }
 directory="\w"
-git="\[\e[31m\]\`parse_git_branch\`\[\e[m\]"
+git="\[\033[01;38;5;9m\]\`parse_git_branch\`\[\e[m\]"
 prompt="\[\033[01;38;5;8m\]>\[\033[01;38;5;9m\]>\[\033[01;38;5;10m\]> \[\033[01;38;5;15m\]"
 
-PS1="\n\[[\033[01;38;5;014m\]󰘧\e[0m] $directory$git $(docker_context)  \n$prompt"
+PS1="\n\[[\033[01;38;5;014m\]󰘧\e[0m] $directory $(docker_context) \n$prompt"
 
