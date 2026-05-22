@@ -19,8 +19,9 @@
 }
 
 window#waybar {
+	 /*background:#1d2021;*/
 	/*background: @background;*/
-	background: #000000;
+background: #000;
 }
 
 #custom-keyboard:hover,
@@ -33,6 +34,7 @@ window#waybar {
 #pulseaudio.sink-muted:hover,
 #custom-powermenu:hover,
 #power-profiles-daemon:hover {
+	 /*color: #1bfd9c;*/
 	opacity: 0.5;
 }
 
