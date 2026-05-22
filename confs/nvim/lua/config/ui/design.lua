@@ -1,6 +1,5 @@
 vim.pack.add({
 	'https://github.com/kyazdani42/nvim-web-devicons',
-	--'https://github.com/stevearc/dressing.nvim',
 	"https://github.com/catgoose/nvim-colorizer.lua",
 	'https://github.com/nvim-lualine/lualine.nvim',
 	'https://github.com/rcarriga/nvim-notify',

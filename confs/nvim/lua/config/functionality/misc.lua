@@ -8,20 +8,8 @@ vim.pack.add({
 	"https://github.com/folke/todo-comments.nvim",
 	'https://github.com/preservim/nerdcommenter',
 	"https://github.com/rachartier/tiny-code-action.nvim",
-
-	--"https://github.com/akinsho/toggleterm.nvim",
-	--"https://github.com/nvim-neo-tree/neo-tree.nvim",
-	--"https://github.com/MunifTanjim/nui.nvim",
-	--"https://github.com/antosha417/nvim-lsp-file-operations",
 	--'https://github.com/jiangmiao/auto-pairs'
-
 	--"https://github.com/nvim-treesitter/nvim-treesitter",
 })
 
---vim.keymap.set("n", "<C-n>", ":Neotree<CR>")
-
 require("todo-comments").setup({})
-
---require("toggleterm").setup({
---open_mapping = [[<c-\>]]
---})

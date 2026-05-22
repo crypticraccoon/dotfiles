@@ -4,6 +4,5 @@ vim.pack.add({
 })
 
 require("config.functionality.base")
---require("config.functionality.telescope")
 require("config.functionality.tabs")
 require("config.functionality.misc")

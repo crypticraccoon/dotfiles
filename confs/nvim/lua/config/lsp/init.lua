@@ -9,5 +9,4 @@ require("mason").setup({
 })
 
 require("config.lsp.completion")
---require("config.lsp.formatter")
 require("config.lsp.lsp")
