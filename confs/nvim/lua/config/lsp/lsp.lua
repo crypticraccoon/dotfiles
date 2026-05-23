@@ -2,33 +2,32 @@ local vim = vim;
 
 --https://github.com/neovim/nvim-lspconfig/tree/master/lsp
 
-local packages = {
+local _ = {
 	"lua_ls",
 	"rust_analyzer",
 	"gopls",
 	"pyright",
-	--"autopep8",
-	--"jsonlint",
-	--"yamllint",
-	--"yq",
-	--"yaml-language-server",
-	--"vtsls",
-	--"prettier",
-	--"prettierd",
-	--"terraform-ls",
-	--"markdown_oxide",
-	--"markdownlint",
-	--"helm-ls",
-	--"docker-language-server",
-	--"docker-compose-language-server",
-	--"gh",
-	--"gh-actions-language-server"
+	"yaml-language-server",
+	"vtsls",
+	"terraform-ls",
+	"helm-ls",
+	"docker-language-server",
+	"docker-compose-language-server",
+	"gh-actions-language-server",
 }
 
 vim.pack.add({
 	"https://github.com/neovim/nvim-lspconfig",
-	"https://github.com/mason-org/mason-lspconfig.nvim"
+	--"https://github.com/mason-org/mason-lspconfig.nvim"
 })
+
+--require("mason-lspconfig").setup({
+--ensure_installed = lsps,
+--automatic_enable = {
+--"lua_ls",
+--"vimls"
+--}
+--})
 
 vim.api.nvim_create_autocmd('LspAttach', {
 	callback = function(ev)
@@ -54,18 +53,45 @@ vim.api.nvim_create_autocmd('LspAttach', {
 	end,
 })
 
-vim.lsp.enable("lua_ls", {
-	cmd = { 'lua-language-server' },
-	filetypes = { 'lua' },
+vim.lsp.config('lua_ls', {
+	on_init = function(client)
+		if client.workspace_folders then
+			local path = client.workspace_folders[1].name
+			if
+				 path ~= vim.fn.stdpath('config')
+				 and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc'))
+			then
+				return
+			end
+		end
+
+		client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+			runtime = {
+				version = 'LuaJIT',
+				path = {
+					'lua/?.lua',
+					'lua/?/init.lua',
+				},
+			},
+			workspace = {
+				checkThirdParty = false,
+				library = {
+					vim.env.VIMRUNTIME,
+					vim.api.nvim_get_runtime_file("lua/lspconfig", false)[1],
+				},
+			},
+		})
+	end,
 	settings = {
 		Lua = {
 			codeLens = { enable = true },
-			hint = { enable = true, semicolon = 'Disable' },
+			hint = { enable = true, semicolon = 'Disabled' },
+
 		},
 	},
 })
 
-vim.lsp.enable('dartls', {
+vim.lsp.config('dartls', {
 	cmd = { 'dart', 'language-server', '--protocol=lsp' },
 	filetypes = { 'dart' },
 	root_markers = { 'pubspec.yaml' },
@@ -84,29 +110,78 @@ vim.lsp.enable('dartls', {
 	},
 })
 
-require("mason-lspconfig").setup({
-	automatic_enable = false,
-	ensure_installed = packages,
+vim.lsp.config("yamlls", {
+	cmd = function(dispatchers, config)
+		local cmd = 'yaml-language-server'
+		if (config or {}).root_dir then
+			local local_cmd = vim.fs.joinpath(config.root_dir, 'node_modules/.bin', cmd)
+			if vim.fn.executable(local_cmd) == 1 then
+				cmd = local_cmd
+			end
+		end
+		return vim.lsp.rpc.start({ cmd, '--stdio' }, dispatchers)
+	end,
+	filetypes = { 'yaml', 'yaml.docker-compose', 'yaml.gitlab', 'yaml.helm-values' },
+	settings = {
+		redhat = { telemetry = { enabled = false } },
+		yaml = { format = { enable = true } },
+	},
+	on_init = function(client)
+		client.server_capabilities.documentFormattingProvider = true
+	end,
 })
 
---vim.lsp.enable("gopls")
---vim.lsp.enable("pyright")
---vim.lsp.enable("autopep8")
---vim.lsp.enable("rust_analyzer")
---vim.lsp.enable("gopls")
---vim.lsp.enable("pyright")
---vim.lsp.enable("jsonlint")
---vim.lsp.enable("yamllint")
---vim.lsp.enable("yq")
---vim.lsp.enable("yaml-language-server")
---vim.lsp.enable("vtsls")
---vim.lsp.enable("prettier")
---vim.lsp.enable("prettierd")
---vim.lsp.enable("terraform-ls")
---vim.lsp.enable("markdown_oxide")
---vim.lsp.enable("markdownlint")
---vim.lsp.enable("helm-ls")
---vim.lsp.enable("docker-language-server")
---vim.lsp.enable("docker-compose-language-server")
---vim.lsp.enable("gh")
---vim.lsp.enable("gh-actions-language-server")
+vim.lsp.config("gh_actions_ls", {
+	cmd = { 'gh-actions-language-server', '--stdio' },
+	filetypes = { 'yaml' },
+
+	-- `root_dir` ensures that the LSP does not attach to all yaml files
+	root_dir = function(bufnr, on_dir)
+		local parent = vim.fs.dirname(vim.api.nvim_buf_get_name(bufnr))
+		if
+			 vim.endswith(parent, '/.github/workflows')
+			 or vim.endswith(parent, '/.forgejo/workflows')
+			 or vim.endswith(parent, '/.gitea/workflows')
+		then
+			on_dir(parent)
+		end
+	end,
+	handlers = {
+		['actions/readFile'] = function(_, result)
+			if type(result.path) ~= 'string' then
+				return nil, nil
+			end
+			local file_path = vim.uri_to_fname(result.path)
+			if vim.fn.filereadable(file_path) == 1 then
+				local f = assert(io.open(file_path, 'r'))
+				local text = f:read('*a')
+				f:close()
+
+				return text, nil
+			end
+			return nil, nil
+		end,
+	},
+	init_options = {},
+	capabilities = {
+		workspace = {
+			didChangeWorkspaceFolders = {
+				dynamicRegistration = true,
+			},
+		},
+	},
+})
+
+vim.lsp.enable("lua_ls")
+vim.lsp.enable('dartls')
+vim.lsp.enable("bashls")
+vim.lsp.enable("yamlls")
+vim.lsp.enable("pyright")
+vim.lsp.enable("rust_analyzer")
+vim.lsp.enable("gopls")
+vim.lsp.enable("vtsls")
+vim.lsp.enable("terraform-ls")
+vim.lsp.enable("helm-ls")
+vim.lsp.enable("docker-language-server")
+vim.lsp.enable("docker-compose-language-server")
+vim.lsp.enable("gh-actions-language-server")
