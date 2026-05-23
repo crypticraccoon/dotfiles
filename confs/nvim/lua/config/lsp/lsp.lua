@@ -14,6 +14,7 @@ local _ = {
 	"docker-language-server",
 	"docker-compose-language-server",
 	"gh-actions-language-server",
+	"lemminx"
 }
 
 vim.pack.add({
@@ -172,6 +173,15 @@ vim.lsp.config("gh_actions_ls", {
 	},
 })
 
+vim.lsp.config("lemminx",
+	{
+		cmd = { 'lemminx' },
+		filetypes = { 'xml', 'xsd', 'xsl', 'xslt', 'svg' },
+		root_markers = { '.git' },
+	}
+)
+
+vim.lsp.enable("lemminx")
 vim.lsp.enable("lua_ls")
 vim.lsp.enable('dartls')
 vim.lsp.enable("bashls")
