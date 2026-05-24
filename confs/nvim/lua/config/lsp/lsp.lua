@@ -173,13 +173,10 @@ vim.lsp.config("gh_actions_ls", {
 	},
 })
 
-vim.lsp.config("lemminx",
-	{
-		cmd = { 'lemminx' },
-		filetypes = { 'xml', 'xsd', 'xsl', 'xslt', 'svg' },
-		root_markers = { '.git' },
-	}
-)
+vim.lsp.config("lemminx", {
+	cmd = { 'lemminx' },
+	filetypes = { 'xml', 'svg' },
+})
 
 vim.lsp.enable("lemminx")
 vim.lsp.enable("lua_ls")
