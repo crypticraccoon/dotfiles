@@ -26,6 +26,10 @@ require("nordic").setup({
 	},
 	bright_border = false,
 	swap_backgrounds = true,
+	on_highlight = function(highlights, _palette)
+		highlights.Visual = { bg = _palette.white0, fg = _palette.black0
+		}
+	end,
 })
 
 vim.cmd([[ let g:gruvbox_material_foreground = "material"]])
