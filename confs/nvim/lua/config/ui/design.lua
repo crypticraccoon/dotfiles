@@ -32,7 +32,7 @@ require("colorizer").setup({
 require("lualine").setup({
 	options = {
 		globalstatus = true,
-		theme = 'nord',
+		theme = 'gruvbox',
 		section_separators = '',
 		component_separators = ''
 

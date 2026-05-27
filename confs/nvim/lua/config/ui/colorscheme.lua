@@ -43,6 +43,7 @@ vim.cmd([[ let g:gruvbox_material_visual = 'red background']])
 vim.cmd([[ let g:sonokai_style = 'andromeda']])
 vim.cmd([[ let g:sonokai_better_performance = 1 ]])
 
+vim.cmd.colorscheme('gruvbox-material')
 
 
 --vim.g.everforest_enable_italic = true
