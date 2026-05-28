@@ -490,13 +490,10 @@ quitOnTopLevelReturn: false
 # Config relating to things outside of Lazygit like how files are opened,
 # copying to clipboard, etc
 os:
-  # Command for editing a file. Should contain "{{filename}}".
-  edit: ""
-
+  edit: "nvim {{filename}}"
   # Command for editing a file at a given line number. Should contain
   # "{{filename}}", and may optionally contain "{{line}}".
-  editAtLine: ""
-
+  editAtLine: "nvim +{{line}} {{filename}}"
   # Same as EditAtLine, except that the command needs to wait until the window is
   # closed.
   editAtLineAndWait: ""
@@ -505,18 +502,16 @@ os:
   editInTerminal: false
 
   # For opening a directory in an editor
-  openDirInEditor: ""
+  openDirInEditor: "yazi {{dir}}"
 
   # A built-in preset that sets all of the above settings. Supported presets are
   # defined in the getPreset function in editor_presets.go.
-  editPreset: ""
-
-  # Command for opening a file, as if the file is double-clicked. Should contain
-  # "{{filename}}", but doesn't support "{{line}}".
-  open: ""
-
+  editPreset: "nvim"
+  # Command for opening a file, as if the file is double-clicked. Should
+  #
   # Command for opening a link. Should contain "{{link}}".
-  openLink: ""
+  openLink: "firefox {{link}}"
+
 
   # CopyToClipboardCmd is the command for copying to clipboard.
   # See https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md#custom-command-for-copying-to-and-pasting-from-clipboard
