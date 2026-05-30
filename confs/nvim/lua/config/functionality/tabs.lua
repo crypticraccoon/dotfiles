@@ -6,14 +6,12 @@ vim.pack.add({
 })
 
 require("scope").setup({
-	config = true,
 })
 
 require('bufferline').setup({
 	options = {
 		always_show_bufferline = true,
 		mode = "buffer",
-		numbers = "ordinal",
 		show_tab_indicators = true,
 		show_duplicate_prefix = false,
 		separator_style = "thin",

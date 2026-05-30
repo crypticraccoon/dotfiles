@@ -27,10 +27,6 @@ vim.o.cmdheight = 1
 cmd('set lazyredraw')
 --vim.o.autocomplete = true
 
---Folding
-set.foldnestmax = 2
-vim.opt.foldmethod = "expr"
-cmd("set nofoldenable")
 ----------------------------------------
 ---------------------------------KEYMAPS
 vim.keymap.set("n", "]g", function()

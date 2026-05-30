@@ -19,9 +19,9 @@
 }
 
 window#waybar {
-	 /*background:#1d2021;*/
+	 background:#1d2021;
 	/*background: @background;*/
-background: #000;
+/*background: #000;*/
 }
 
 #custom-keyboard:hover,

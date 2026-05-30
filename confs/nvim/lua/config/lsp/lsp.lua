@@ -2,21 +2,6 @@ local vim = vim;
 
 --https://github.com/neovim/nvim-lspconfig/tree/master/lsp
 
-local _ = {
-	"lua_ls",
-	"rust_analyzer",
-	"gopls",
-	"pyright",
-	"yaml-language-server",
-	"vtsls",
-	"terraform-ls",
-	"helm-ls",
-	"docker-language-server",
-	"docker-compose-language-server",
-	"gh-actions-language-server",
-	"lemminx"
-}
-
 vim.pack.add({
 	"https://github.com/neovim/nvim-lspconfig",
 	--"https://github.com/mason-org/mason-lspconfig.nvim"
