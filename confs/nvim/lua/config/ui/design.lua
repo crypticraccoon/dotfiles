@@ -4,7 +4,18 @@ vim.pack.add({
 	'https://github.com/nvim-lualine/lualine.nvim',
 	'https://github.com/rcarriga/nvim-notify',
 	"https://github.com/xiyaowong/transparent.nvim",
+	"https://github.com/rachartier/tiny-code-action.nvim",
 })
+
+vim.keymap.set(
+	{ "n", "v" },
+	"<space>s",
+	function()
+		require("tiny-code-action").code_action()
+	end,
+	{ noremap = true, silent = true }
+)
+
 
 local colors = {
 	blue = "#83a598",
@@ -93,4 +104,3 @@ require("notify").setup({
 	top_down = false,
 	render = "compact",
 })
-
