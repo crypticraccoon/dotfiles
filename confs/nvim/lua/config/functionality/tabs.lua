@@ -15,8 +15,7 @@ require('bufferline').setup({
 		show_tab_indicators = true,
 		show_duplicate_prefix = false,
 		separator_style = "thin",
-		enforce_regular_tabs = false,
-		auto_toggle_bufferline = true
+		enforce_regular_tabs = true,
 	}
 })
 

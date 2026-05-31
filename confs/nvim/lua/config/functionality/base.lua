@@ -9,9 +9,8 @@ require("snacks").setup({
 		duration = 20,
 		easing = "linear",
 		fps = 120,
-	}
+	},
 })
-
 
 -- Misc
 vim.keymap.set('n', "<leader>ts", function() Snacks.scratch() end, { noremap = true, silent = false })
@@ -26,6 +25,7 @@ vim.keymap.set('n', "<leader>lD", function() Snacks.picker.lsp_declarations() en
 vim.keymap.set('n', "<C-n>", function() Snacks.explorer() end, { noremap = true, silent = false })
 
 -- Files, words etc
+vim.keymap.set('n', "<Space>fs", function() Snacks.picker.smart() end, { noremap = true, silent = false })
 vim.keymap.set('n', "<Space>ff", function() Snacks.picker.files() end, { noremap = true, silent = false })
 vim.keymap.set('n', "<Space>fb", function() Snacks.picker.buffers() end, { noremap = true, silent = false })
 vim.keymap.set('n', "<Space>fn", function() Snacks.picker.notifications() end, { noremap = true, silent = false })
