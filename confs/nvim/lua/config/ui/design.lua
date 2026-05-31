@@ -67,14 +67,14 @@ require("lualine").setup({
 				},
 				mode = 2,
 			},
-			--{
-			--"filename",
-			--file_status = true,
-			--path = 3,
-			--shorting_target = 0,
-			--},
 		},
 		lualine_c = {
+			{
+				"filename",
+				file_status = true,
+				path = 3,
+				shorting_target = 0,
+			},
 		},
 
 		lualine_x = {
