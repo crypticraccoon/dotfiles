@@ -9,16 +9,7 @@ vim.pack.add({
 	'https://github.com/preservim/nerdcommenter',
 	"https://github.com/rachartier/tiny-code-action.nvim",
 	"https://github.com/m4xshen/autoclose.nvim",
-	"https://github.com/nvim-treesitter/nvim-treesitter",
 })
 
 require("todo-comments").setup({})
 require("autoclose").setup({})
-
-require('nvim-treesitter').setup()
-require('nvim-treesitter').install(TSlang)
-
-vim.opt.foldmethod = "expr"
-vim.opt.foldnestmax = 2
-vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-vim.cmd("set nofoldenable")
