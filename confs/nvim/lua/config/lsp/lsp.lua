@@ -160,6 +160,22 @@ vim.lsp.config("lemminx", {
 	filetypes = { 'xml', 'svg' },
 })
 
+vim.lsp.config("nil", {
+	autostart = true,
+	capabilities = vim.tbl_deep_extend(
+		'force',
+		vim.lsp.protocol.make_client_capabilities(),
+		require('cmp_nvim_lsp').default_capabilities(),
+		{ workspace = { didChangeWatchedFiles = { dynamicRegistration = true } } }
+	),
+	cmd = { vim.env.NIL_PATH or 'target/debug/nil' },
+	settings = {
+		['nil'] = {
+			testSetting = 42,
+		},
+	},
+})
+
 vim.lsp.enable("lemminx")
 vim.lsp.enable("lua_ls")
 vim.lsp.enable('dartls')
@@ -174,3 +190,4 @@ vim.lsp.enable("helm-ls")
 vim.lsp.enable("docker-language-server")
 vim.lsp.enable("docker-compose-language-server")
 vim.lsp.enable("gh-actions-language-server")
+vim.lsp.enable("nil")

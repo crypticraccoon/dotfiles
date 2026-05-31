@@ -1,6 +1,42 @@
-TSlang = { "bash", "vim", "javascript", "typescript", "dart", "rust", "python", "ninja", "nginx", "qmljs", "regex",
-	"meson", "kitty", "json5", "jsdoc", "cmake", "caddy", "yaml", "toml", "tmux", "make", "llvm", "luap", "luau", "json",
-	"html", "helm", "diff", "xml", "tsx", "sql", "nix", "lua", "jsx", "css", "awk", "go", "c" }
+TSlang = {
+	"bash",
+	"vim",
+	"javascript",
+	"typescript",
+	"dart",
+	"rust",
+	"python",
+	"ninja",
+	"nginx",
+	"qmljs",
+	"regex",
+	"meson",
+	"kitty",
+	"json5",
+	"jsdoc",
+	"cmake",
+	"caddy",
+	"yaml",
+	"toml",
+	"tmux",
+	"make",
+	"llvm",
+	"luap",
+	"luau",
+	"json",
+	"html",
+	"helm",
+	"diff",
+	"xml",
+	"tsx",
+	"sql",
+	"nix",
+	"lua",
+	"jsx",
+	"css",
+	"awk",
+	"go",
+	"c" }
 
 Lsps = {
 	"lua_ls",
@@ -14,35 +50,42 @@ Lsps = {
 	"docker-language-server",
 	"docker-compose-language-server",
 	"gh-actions-language-server",
-	"lemminx"
+	"lemminx",
+	--"nil",
+}
+
+Formatters = {
+	python = { "autopep8", lsp_format = "fallback" },
+	bash = { "shfmt" },
+	yaml = { "yq", lsp_format = "fallback" },
+	rust = { "rustfmt", lsp_format = "fallback" },
+	lua = { "stylua" },
+	json = { "jq" },
+	go = { "gofmt" },
+	javascript = { "prettierd", "prettier", stop_after_first = true },
+	typescript = { "eslint_d", "prettier" },
+	typescriptreact = { "eslint_d", "prettier" },
+	markdown = { "markdownlint" },
+	nix = { "nixfmt" }
+}
+
+MasonMisc = {
+
 }
 
 --Formatters = {
-	--"autopep8",
-	--"jsonlint",
-	--"yamllint",
-	--"yq",
-	--"prettier",
-	--"prettierd",
-	--"markdown_oxide",
-	--"markdownlint",
-	--"gh",
+--"autopep8",
+--"jsonlint",
+--"yamllint",
+--"yq",
+--"prettier",
+--"prettierd",
+--"markdown_oxide",
+--"markdownlint",
+--"gh",
 --}
 
 
-Formatters = {
-		python = { "autopep8", lsp_format = "fallback" },
-		bash = { "shfmt" },
-		yaml = { "yq", lsp_format = "fallback" },
-		rust = { "rustfmt", lsp_format = "fallback" },
-		lua = { "stylua" },
-		json = { "jq" },
-		go = { "gofmt" },
-		javascript = { "prettierd", "prettier", stop_after_first = true },
-		typescript = { "eslint_d", "prettier" },
-		typescriptreact = { "eslint_d", "prettier" },
-		markdown = { "markdownlint" },
-	}
 --return {
 --{
 --treesitter = { "lua" },

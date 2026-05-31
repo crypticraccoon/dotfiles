@@ -36,6 +36,10 @@
       "rev": "4cbf247147273188feb6a8cbee61c828b94a8854",
       "src": "https://github.com/dotsilas/darcubox-nvim"
     },
+    "ensure.nvim": {
+      "rev": "63cf0bb5e8400c6a9cf7cb42d4d62e044893c4c7",
+      "src": "https://github.com/noirbizarre/ensure.nvim"
+    },
     "everforest": {
       "rev": "aeef62ee97872d2557d25904d160ec93a4a355f8",
       "src": "https://github.com/sainnhe/everforest"
