@@ -4,16 +4,8 @@ local vim = vim;
 
 vim.pack.add({
 	"https://github.com/neovim/nvim-lspconfig",
-	--"https://github.com/mason-org/mason-lspconfig.nvim"
 })
 
---require("mason-lspconfig").setup({
---ensure_installed = lsps,
---automatic_enable = {
---"lua_ls",
---"vimls"
---}
---})
 
 vim.api.nvim_create_autocmd('LspAttach', {
 	callback = function(ev)
@@ -31,7 +23,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		end, opts)
 		vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
 		vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
-		vim.keymap.set({ 'n', 'v' }, '<space>s', vim.lsp.buf.code_action, opts)
+		-- NOTE: Replaced with tiny-code-action
+		--vim.keymap.set({ 'n', 'v' }, '<space>s', vim.lsp.buf.code_action, opts)
 		vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
 	end,
 })
