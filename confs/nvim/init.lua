@@ -57,10 +57,3 @@ map("v", "K", ":m '<-2<CR>gv=gv")
 
 require("plugin.pack")
 ----set.showtabline = 0
-
-----vim.cmd.colorscheme('oxocarbon')
-----vim.cmd.colorscheme('monoglow-lack')
-----vim.cmd.colorscheme('noirblaze')
-----set.syntax = "on"
-
---set.background = "dark"
