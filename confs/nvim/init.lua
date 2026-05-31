@@ -23,7 +23,8 @@ set.shadafile = "NONE"
 set.tabstop = 2
 set.shadafile = ""
 vim.o.pumheight = 20 -- Max items to show in pop up menu
-vim.o.cmdheight = 1
+set.showtabline = 0
+set.cmdheight = 0
 cmd('set lazyredraw')
 --vim.o.autocomplete = true
 
@@ -56,4 +57,3 @@ map("v", "J", ":m '>+1<CR>gv=gv")
 map("v", "K", ":m '<-2<CR>gv=gv")
 
 require("plugin.pack")
-----set.showtabline = 0
