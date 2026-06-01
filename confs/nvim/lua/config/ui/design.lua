@@ -40,12 +40,16 @@ require("colorizer").setup({
 	}
 })
 
+local custom_gruvbox = require 'lualine.themes.gruvbox-material'
+custom_gruvbox.normal.c.bg = "#1D2021"
+
 require("lualine").setup({
 	options = {
 		globalstatus = true,
-		theme = 'gruvbox-material',
+		theme = custom_gruvbox,
 		section_separators = '',
-		component_separators = ''
+		component_separators = '',
+		--theme  = custom_gruvbox ,
 
 	},
 	sections = {
