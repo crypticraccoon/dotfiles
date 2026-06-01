@@ -43,7 +43,7 @@ require("colorizer").setup({
 require("lualine").setup({
 	options = {
 		globalstatus = true,
-		theme = 'gruvbox',
+		theme = 'gruvbox-material',
 		section_separators = '',
 		component_separators = ''
 
@@ -54,19 +54,9 @@ require("lualine").setup({
 			--"tabs",
 		},
 		lualine_b = {
-			{
-				--"buffers",
-				buffers_color = {
-					active = { bg = colors.yellow, fg = colors.black, gui = "bold" },
-					inactive = { bg = colors.grey, fg = colors.cream, gui = "italic" },
-				},
-				symbols = {
-					modified = " ●",
-					alternate_file = "",
-					directory = "",
-				},
-				mode = 2,
-			},
+			"branch",
+			"diff",
+			"diagnostics",
 		},
 		lualine_c = {
 			{
@@ -79,10 +69,11 @@ require("lualine").setup({
 
 		lualine_x = {
 
+			"vim.lsp.get_clients()[1].name",
 			"filesize",
-			"branch",
-			"diff",
-			"diagnostics",
+			--"branch",
+			--"diff",
+			--"diagnostics",
 		},
 		lualine_y = {
 			"searchcount",
