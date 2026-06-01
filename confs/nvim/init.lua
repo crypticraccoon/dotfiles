@@ -24,7 +24,7 @@ set.tabstop = 2
 set.shadafile = ""
 vim.o.pumheight = 20 -- Max items to show in pop up menu
 set.showtabline = 0
-set.cmdheight = 0
+set.cmdheight = 1
 cmd('set lazyredraw')
 --vim.o.autocomplete = true
 
